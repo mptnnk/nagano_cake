@@ -1,9 +1,10 @@
 class Admin::ItemsController < ApplicationController
   # 商品一覧
   def index
+    @items = Item.all
   end
 
-　# 商品新規登録画面
+# 商品の新規登録画面
   def new
   end
   
@@ -11,11 +12,11 @@ class Admin::ItemsController < ApplicationController
   def create
   end
 
-　# 商品詳細画面
+# 商品詳細画面
   def show
   end
 
-　# 商品編集画面
+# 商品
   def edit
   end
   
