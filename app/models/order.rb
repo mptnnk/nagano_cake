@@ -11,4 +11,8 @@ class Order < ApplicationRecord
     preparing_deliver:3,
     deliverd:4,
   }
+  
+  has_many:order_details,dependent: :destroy
+  belongs_to:customers
+  
 end

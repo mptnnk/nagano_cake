@@ -5,4 +5,7 @@ class OrderDetail < ApplicationRecord
     in_production:2,
     production_comp:3
   }
+  
+  belongs_to:orders
+  belongs_to:items
 end
