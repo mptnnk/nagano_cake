@@ -6,6 +6,16 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
+      
+      t.string :last_name
+      t.string :first_name
+      t.string :last_name_kana
+      t.string :first_name_kana
+      
+      t.string :postal_code
+      t.string :address
+      t.string :telephone_number
+      t.boolean :is_deleted
 
       ## Recoverable
       t.string   :reset_password_token
@@ -31,8 +41,8 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       # t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
-
-
+      
+      
       t.timestamps null: false
     end
 
