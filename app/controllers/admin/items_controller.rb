@@ -7,7 +7,7 @@ class Admin::ItemsController < ApplicationController
 # 商品の新規登録画面
   def new
   end
-  
+
   # 商品情報の新規登録
   def create
   end
@@ -16,10 +16,10 @@ class Admin::ItemsController < ApplicationController
   def show
   end
 
-# 商品
+# 商品編集画面
   def edit
   end
-  
+
   # 商品情報の更新
   def update
   end
