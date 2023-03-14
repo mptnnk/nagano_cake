@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  devise_for :admins,controllers:{
+  devise_for :admin,controllers:{
     sessions:'admin/sessions',
     passwords:'admin/passwords',
     registrations:'admin/registrations'
@@ -39,7 +39,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    get '/'=>'homes#top',as:"admin"
+    get '/'=>'homes#top'
     resources:customers,only:[:index,:show,:edit,:update]
     resources:items,only:[:index,:new,:create,:show,:edit,:update]
     resources:genres,only:[:index,:create,:edit,:update]

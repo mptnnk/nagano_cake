@@ -7,11 +7,11 @@ class Admin::GenresController < ApplicationController
   def create
   end
 
-　# ジャンル編集画面
+# ジャンル編集画面
   def edit
   end
   
-  # ジャンルデータ更新
+# ジャンルデータ更新
   def update
   end
 

@@ -3,11 +3,11 @@ class Admin::CustomersController < ApplicationController
   def index
   end
 
-　# 顧客詳細画面
+# 顧客詳細画面
   def show
   end
 
-　# 顧客編集画面
+# 顧客編集画面
   def edit
   end
   
