@@ -20,6 +20,10 @@
         <td><%= item.select:genre_id,[["ケーキ","1"],["プリン","2"],["焼き菓子","3"],["キャンディ","4"]],include_blank:"--選択してください--"%><br></td>
       </tr>
       <tr>
+        <td><label for="price">税抜価格</label></td>
+        <td><%= item.number_field:price %>円</td>
+      </tr>
+      <tr>
         <td><label for="is_active">販売ステータス</label></td>
         <td>
           <%= item.radio_button:is_active,true %>
