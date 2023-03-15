@@ -8,4 +8,6 @@ class Customer < ApplicationRecord
   has_many:orders,dependent: :destroy
   has_many:cart_items,dependent: :destroy
   
+  # validates:name,presence:true,length:{minimum:2,maximum:20}
+  
 end
