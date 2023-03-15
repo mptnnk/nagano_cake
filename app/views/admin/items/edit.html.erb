@@ -1,2 +1,41 @@
-<h1>Admin::Items#edit</h1>
-<p>Find me in app/views/admin/items/edit.html.erb</p>
+div class="container">
+  <h4>商品編集</h4>
+  <table class="table table-borderless">
+    <%= form_with model:[:admin,@item],multipart:true,local:true do |item|%>
+    <tbody>
+      <tr>
+        <td><label for="image">商品画像</label></td>
+        <td><%= item.file_field:image,accept:"image/*"%><br></td>
+      </tr>
+      <tr>
+        <td><label for="name">商品名</label></td>
+        <td><%= item.text_field:name %><br></td>
+      </tr>
+      <tr>
+        <td><label for="introduction">商品説明</label></td>
+        <td><%= item.text_area:introduction %><br></td>
+      </tr>
+      <tr>
+        <td><label for="genre_id">ジャンル</label></td>
+        <td><%= item.select:genre_id,[["ケーキ","1"],["プリン","2"],["焼き菓子","3"],["キャンディ","4"]],include_blank:"--選択してください--"%><br></td>
+      </tr>
+      <tr>
+        <td><label for="price">税抜価格</label></td>
+        <td><%= item.number_field:price %>円</td>
+      </tr>
+      <tr>
+        <td><label for="is_active">販売ステータス</label></td>
+        <td>
+          <%= item.radio_button:is_active,true %>
+          <%= item.label:is_active,"販売中",{value:"true",style:"display:inline-block;"}%>
+          <%= item.radio_button:is_active,false %>
+          <%= item.label:is_active,"販売停止中",{value:"false",style:"display:inline-block;"}%><br>
+        </td>
+      </tr>
+      <tr>
+        <td><%= item.submit"変更を保存"%></td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
+</div>

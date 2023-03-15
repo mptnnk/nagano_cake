@@ -9,7 +9,7 @@ class Admin::ItemsController < ApplicationController
     @item = Item.new
   end
 
-  # 商品情報の新規登録
+# 商品情報の新規登録
   def create
     @item = Item.new(item_params)
     if @item.save
@@ -40,9 +40,9 @@ class Admin::ItemsController < ApplicationController
       render:edit
     end
   end
-  
+
   private
-  
+
   def item_params
     params.require(:item).permit(:genre_id,:name,:introduction,:price,:is_active)
   end

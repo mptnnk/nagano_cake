@@ -1,7 +1,7 @@
 <div class="container">
   <h4>商品新規登録</h4>
   <table class="table table-borderless">
-    <%= form_with model:[:admin,@item],multipart:true do |item|%>
+    <%= form_with model:[:admin,@item],multipart:true,local:true do |item|%>
     <tbody>
       <tr>
         <td><label for="image">商品画像</label></td>
