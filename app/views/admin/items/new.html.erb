@@ -1,7 +1,7 @@
 <div class="container">
   <h4>商品新規登録</h4>
+  <%= form_with model: @item, url: admin_items_path, local:true do |item|%>
   <table class="table table-borderless">
-    <%= form_with model:[:admin,@item],multipart:true,local:true do |item|%>
     <tbody>
       <tr>
         <td><label for="image">商品画像</label></td>
@@ -17,7 +17,7 @@
       </tr>
       <tr>
         <td><label for="genre_id">ジャンル</label></td>
-        <td><%= item.select:genre_id,[["ケーキ","1"],["プリン","2"],["焼き菓子","3"],["キャンディ","4"]],include_blank:"--選択してください--"%><br></td>
+        <td><%= item.collection_select(:genre_id,@genres,:id,:name,include_blank:"--選択してください--")%><br></td>
       </tr>
       <tr>
         <td><label for="price">税抜価格</label></td>
@@ -36,6 +36,6 @@
         <td><%= item.submit"新規登録"%></td>
       </tr>
     </tbody>
-    <% end %>
   </table>
+  <% end %>
 </div>
