@@ -1,3 +1,34 @@
 <div class="container">
  <h4>商品詳細</h4>
+ <table class ="table">
+   <tr>
+     <td><%= @item.image %></td>
+     <td>
+       <label for="name">商品名</label>
+       <%= @item.name %>
+     </td>
+     <td>
+       <label for="introduction">商品説明</label>
+       <%= @item.introduction %>
+     </td>
+     <td>
+       <label for="genre">ジャンル</label>
+       <%= @item.genre_id %>
+       <!--enumの値を呼び出す方法を調べて変更する-->
+     </td>
+     <td>
+       <label for="price">税込価格（税抜価格）</label>
+       <%= @item.price %>
+       <!--税込と税抜の表示は見本では改行されている。priceは税抜価格のため、後で税込価格の表示を作成する-->
+     </td>
+     <td>
+       <label for="is_active">販売ステータス</label>
+       <%= @item.is_active %>
+     </td>
+     <td>
+       <%= link_to"編集する",edit_admin_item_path(@item.id) %>
+     </td>
+   </tr>
+ </table>
+ 
 </div>
