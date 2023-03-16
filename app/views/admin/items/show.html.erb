@@ -2,7 +2,7 @@
  <h4>商品詳細</h4>
  <table class ="table">
    <tr>
-     <td><%= @item.image %></td>
+     <td><%= image_tag @item.image,size:'100x100' %></td>
      <td>
        <label for="name">商品名</label>
        <%= @item.name %>
