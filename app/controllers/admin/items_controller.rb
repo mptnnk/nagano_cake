@@ -29,6 +29,7 @@ class Admin::ItemsController < ApplicationController
 # 商品編集画面
   def edit
     @item = Item.find(params[:id])
+    @genres = Genre.all
   end
 
   # 商品情報の更新

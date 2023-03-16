@@ -15,7 +15,7 @@
        <th>ステータス</th>
       </tr>
     </thead>
-    
+
     <tbody>
       <% @items.each do |items|%>
       <tr>
@@ -23,9 +23,15 @@
           <%= items.id %>
         </td>
         <td><%= link_to items.name, admin_item_path(items.id) %></td>
-        <td><%= items.price %></td>
+        <td><%= items.price %>円</td>
         <td><%= items.genre.name %></td>
-        <td><%= items.is_active %></td>
+        <td>
+          <% if items.is_active == true %>
+           販売中
+          <% else %>
+           販売停止中
+          <% end %>
+        </td>
       </tr>
       <% end %>
     </tbody>
