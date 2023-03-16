@@ -1,6 +1,6 @@
 <div class="container">
   <h4>ジャンル編集</h4>
-  <%= form_with model:[:admin,@genre] do |genre|%>
+  <%= form_with model: @genre, url: edit_admin_genre_path, local: true do |genre|%>
    <label for="name">ジャンル名</label>
    <%= genre.text_field:name %>
    <%= genre.submit'変更を保存'%>
