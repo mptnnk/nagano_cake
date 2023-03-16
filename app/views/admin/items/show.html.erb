@@ -1,16 +1,13 @@
 <div class="container">
  <h4>商品詳細</h4>
+ <!--あとでスタイル-->
  <table class ="table">
    <tr>
-     <td><%= image_tag @item.image,size:'100x100' %></td>
-     <td>
-       <label for="name">商品名</label><br>
-       <%= @item.name %>
-     </td>
-     <td>
-       <label for="introduction">商品説明</label><br>
-       <%= @item.introduction %>
-     </td>
+     <th><%= image_tag @item.image,size:'250x250' %></th>
+     <th><label for="name">商品名</label></th>
+     <td><%= @item.name %></td>
+     <th><label for="introduction">商品説明</label></th>
+     <td><%= @item.introduction %></td>
      <td>
        <label for="genre">ジャンル</label><br>
        <%= @item.genre.name %>

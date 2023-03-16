@@ -2,29 +2,28 @@
   <h4>商品編集</h4>
   <table class="table table-borderless">
     <%= form_with model: @item,url: edit_admin_item_path, local:true do |item|%>
-    <tbody>
       <tr>
-        <td><label for="image">商品画像</label></td>
+        <th><label for="image">商品画像</label></th>
         <td><%= item.file_field:image,accept:"image/*"%><br></td>
       </tr>
       <tr>
-        <td><label for="name">商品名</label></td>
+        <th><label for="name">商品名</label></th>
         <td><%= item.text_field:name %><br></td>
       </tr>
       <tr>
-        <td><label for="introduction">商品説明</label></td>
+        <th><label for="introduction">商品説明</label></th>
         <td><%= item.text_area:introduction %><br></td>
       </tr>
       <tr>
-        <td><label for="genre_id">ジャンル</label></td>
+        <th><label for="genre_id">ジャンル</label></th>
         <td><%= item.collection_select(:genre_id,@genres,:id,:name,include_blank:"--選択してください--")%><br></td>
       </tr>
       <tr>
-        <td><label for="price">税抜価格</label></td>
+        <th><label for="price">税抜価格</label></th>
         <td><%= item.number_field:price %>円</td>
       </tr>
       <tr>
-        <td><label for="is_active">販売ステータス</label></td>
+        <th><label for="is_active">販売ステータス</label></th>
         <td>
           <%= item.radio_button:is_active,true %>
           <%= item.label:is_active,"販売中",{value:"true",style:"display:inline-block;"}%>
@@ -35,7 +34,6 @@
       <tr>
         <td><%= item.submit"変更を保存"%></td>
       </tr>
-    </tbody>
     <% end %>
   </table>
 </div>
