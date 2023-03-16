@@ -1,19 +1,19 @@
 ja:
- # enums:
- #  order:
- #   payment:
- #    credit:"クレジット"
- #    bank:"銀行振込"
+ enums:
+  order:
+   payment_method:
+    credit:"クレジットカード"
+    bank:"銀行振込"
 
- #   status:
- #    payment_waiting:"入金待ち"
- #    payment_confirmation:"入金確認"
- #    in_production:"製作中"
- #    preparing_deliver:"発送準備中"
- #    deliverd:"発送済み"
+   status:
+    payment_waiting:"入金待ち"
+    payment_confirmation:"入金確認"
+    in_production:"製作中"
+    preparing_deliver:"発送準備中"
+    deliverd:"発送済み"
 
- #  order_details:
- #   cant_start:"着手不可"
- #   waiting_start:"製作待ち"
- #   in_production:"製作中"
- #   production_comp:"製作完了"
+  order_details:
+   cant_start:"着手不可"
+   waiting_start:"製作待ち"
+   in_production:"製作中"
+   production_comp:"製作完了"
