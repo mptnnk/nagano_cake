@@ -1,6 +1,7 @@
 class Public::CustomersController < ApplicationController
   # 顧客のマイページ
   def show
+    @customer = current_customer
   end
 
   # 顧客の登録情報編集画面
