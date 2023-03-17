@@ -51,7 +51,7 @@
                  <%= link_to"カート",cart_items_path,style:"color:black" %>
                </li>
                <li class="nav-link">
-                 <%= link_to"ログアウト",destroy_customer_session,method: :delete,style:"color:black" %>
+                 <%= link_to"ログアウト",destroy_customer_session_path,method: :delete,style:"color:black" %>
                </li>
               <!--どちらもログインしていない時-->
               <% else %>
