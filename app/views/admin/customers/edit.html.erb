@@ -16,15 +16,15 @@
     </tr>
     <tr>
       <th>郵便番号</th>
-      <td><%= ce.number_field:postal_code %></td>
+      <td><%= ce.text_field:postal_code %></td>
     </tr>
     <tr>
       <th>住所</th>
-      <td><%= ce.text_area :address,size: "70x5" %></td>
+      <td><%= ce.text_area :address,size: "50x1" %></td>
     </tr>
     <tr>
       <th>電話番号</th>
-      <td><%= ce.telephon_field:telephone_number %></td>
+      <td><%= ce.telephone_field:telephone_number %></td>
     </tr>
     <tr>
       <th>メールアドレス</th>
@@ -40,6 +40,7 @@
       </td>
     </tr>
     <tr>
+      <th></th>
       <td><%= ce.submit "変更を保存"%></td>
     </tr>
   </table>
