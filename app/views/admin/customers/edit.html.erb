@@ -1,3 +1,47 @@
 <div class="container">
   <h4>**さんの会員情報編集</h4>
+  <%= form_with model: @customer,url: admin_customers_path, local:true do |ce|%>
+  <table class="table">
+    <tr>
+      <th>会員ID</th>
+      <td><%= ce.id %></td>
+    </tr>
+    <tr>
+      <th>氏名</th>
+      <td><%= ce.text_field:last_name %>  <%= ce.text_field:first_name %></td>
+    </tr>
+    <tr>
+      <th>フリガナ</th>
+      <td><%= ce.text_field:last_name_kana %>  <%= ce.text_field:first_name_kana %></td>
+    </tr>
+    <tr>
+      <th>郵便番号</th>
+      <td><%= ce.number_field:postal_code %></td>
+    </tr>
+    <tr>
+      <th>住所</th>
+      <td><%= ce.text_area :address,size: "70x5" %></td>
+    </tr>
+    <tr>
+      <th>電話番号</th>
+      <td><%= ce.telephon_field:telephone_number %></td>
+    </tr>
+    <tr>
+      <th>メールアドレス</th>
+      <td><%= ce.email_field:email %></td>
+    </tr>
+    <tr>
+      <th>会員ステータス</th>
+      <td>
+        <%= ce.radio_button:is_deleted,false %>
+        <%= ce.label:is_deleted,"有効",{value:"false",style:"display:inline-block;"}%>
+        <%= ce.radio_button:is_deleted,true %>
+        <%= ce.label:is_deleted,"退会",{value:"true",style:"display:inline-block;"}%>
+      </td>
+    </tr>
+    <tr>
+      <td><%= ce.submit "変更を保存"%></td>
+    </tr>
+  </table>
+  <% end %>
 </div>
