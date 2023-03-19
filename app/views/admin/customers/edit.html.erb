@@ -1,10 +1,10 @@
 <div class="container">
-  <h4>**さんの会員情報編集</h4>
+  <h4><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h4>
   <%= form_with model: @customer,url: admin_customers_path, local:true do |ce|%>
   <table class="table">
     <tr>
       <th>会員ID</th>
-      <td><%= ce.id %></td>
+      <td><%= @customer.id %></td>
     </tr>
     <tr>
       <th>氏名</th>
@@ -41,7 +41,7 @@
     </tr>
     <tr>
       <th></th>
-      <td><%= ce.submit "変更を保存"%></td>
+      <td><%= ce.submit "変更を保存",class:'btn btn-success' %></td>
     </tr>
   </table>
   <% end %>

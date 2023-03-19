@@ -1,6 +1,5 @@
 <div class="container">
-  <h4>**さんの会員詳細</h4>
-  <!--あとで会員名を呼び出せるようにする-->
+  <h4><%= @customer.last_name%><%= @customer.first_name %>さんの会員詳細</h4>
   <table>
     <tr>
       <th>会員ID</th>
@@ -41,7 +40,7 @@
       </td>
     </tr>
     <tr>
-      <td><%= link_to "編集する",edit_admin_customer_path %></td>
+      <td><%= link_to "編集する",edit_admin_customer_path,class:'btn btn-success' %></td>
       <!--顧客の注文履歴一覧ページへのリンクを貼る-->
     </tr>
   </table>

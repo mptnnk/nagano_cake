@@ -3,7 +3,7 @@
   <%= form_with model: @genre, url: admin_genres_path, local: true do |genre|%>
    <label for="name">ジャンル名</label>
    <%= genre.text_field:name %>
-   <%= genre.submit'新規登録'%>
+   <%= genre.submit'新規登録',class:'btn btn-success'%>
   <% end %>
   
   <table class="table">
@@ -15,7 +15,7 @@
       <% @genres.each do |genres|%>
       <tr>
         <td><%= genres.name %></td>
-        <td><%= link_to"編集する",edit_admin_genre_path(genres.id)%></td>
+        <td><%= link_to"編集する",edit_admin_genre_path(genres.id),class:'btn btn-success' %></td>
       </tr>
       <% end %>
     </tbody>
