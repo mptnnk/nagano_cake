@@ -1,7 +1,19 @@
 class Public::AddressesController < ApplicationController
   # 配送先登録/一覧画面
   def index
+    @address = Address.new
     @addresses = Address.all
+  end
+  
+  def create
+    @address = Address.new(address_params)
+    @customer = current_customer
+    if @address.save!
+      flash[:notice]="配送先を登録しました"
+      redirect_to addresses_path
+    else
+      render:index
+    end
   end
 
   # 配送先編集画面
@@ -23,6 +35,7 @@ class Public::AddressesController < ApplicationController
   private
   
   def address_params
-    params.require(:address),permit(:customer_id,:name,:postal_code,:address)
+    params.require(:address).permit(:customer_id,:name,:postal_code,:address)
+  end
 
 end
