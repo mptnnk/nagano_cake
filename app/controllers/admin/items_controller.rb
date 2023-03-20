@@ -15,7 +15,8 @@ class Admin::ItemsController < ApplicationController
     @item = Item.new(item_params)
     # @item.genre_id = params[:item][:genre_id].to_i
     if @item.save!
-      redirect_to admin_items_path
+      flash[:notice]="商品の新規登録に成功しました"
+      redirect_to admin_item_path(@item.id)
     else
       render:new
     end
