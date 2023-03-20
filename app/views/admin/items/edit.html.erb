@@ -1,6 +1,6 @@
 <div class="container">
   <h4>商品編集</h4>
-  <%= form_with model: @item,url: edit_admin_item_path, local:true do |item|%>
+  <%= form_with model: @item,url: admin_item_path(@item) , local:true do |item|%>
   <table class="table table-borderless">
       <tr>
         <th>商品画像</th>
