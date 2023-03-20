@@ -22,10 +22,16 @@ class Public::CustomersController < ApplicationController
 
 # 　顧客の退会確認画面
   def unsubscribe
+    @customer = current_customer
   end
   
   # 顧客の退会処理（ステータス更新）
   def withdraw
+    @customer = current_customer
+    @customer.update(is_deleted: true)
+    reset_session
+    flash[:notice]="退会が完了しました。"
+    redirect_to root_path
   end
   
   private

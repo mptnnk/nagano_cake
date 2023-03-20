@@ -3,7 +3,7 @@ class Public::ItemsController < ApplicationController
   def index
   end
 
-　# 商品詳細
+  # 商品詳細
   def show
   end
 end
