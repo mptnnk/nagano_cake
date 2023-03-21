@@ -1,5 +1,5 @@
 class Public::AddressesController < ApplicationController
-  
+
   # 配送先登録/一覧画面
   def index
     @address = Address.new
@@ -34,6 +34,9 @@ class Public::AddressesController < ApplicationController
 
   # 配送先の削除
   def destroy
+    @address = Address.find(params[:id])
+    @address.destroy
+    redirect_to addresses_path
   end
 
   private

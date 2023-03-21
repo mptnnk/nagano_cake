@@ -17,7 +17,7 @@
     </tr>
    </table>
    <% end %>
-  
+
   <table class="table table-bordered">
     <thead>
       <th scope="col">郵便番号</th>
@@ -33,7 +33,8 @@
         <td><%= addresses.name %></td>
         <td colspan="2">
           <%= link_to"編集する",edit_address_path(addresses.id),class:'btn btn-success'%>
-          <%= link_to"削除する",addresses_path(addresses.id),method: :delete,class:'btn btn-danger'%>
+          <%= link_to"削除する",address_path(addresses.id), method: :delete,class:'btn btn-danger',"data-confirm"=>"削除しますか？"%>
+          <!--ルートが「DELETE /addresses/:id（パス生成なし）」だったが複数形だとIDを渡せなかった。1つだけ削除したいので単数形で指定するのが正らしい-->
         </td>
       </tr>
       <% end %>
