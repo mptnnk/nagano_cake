@@ -1,5 +1,5 @@
 class Public::OrdersController < ApplicationController
-  # 注文情報入力画面
+  # 注文情報入力画面（支払方法・配送先選択）
   def new
   end
 
@@ -19,7 +19,7 @@ class Public::OrdersController < ApplicationController
   def index
   end
 
-  # 注文
+  # 注文履歴詳細画面
   def show
   end
 end

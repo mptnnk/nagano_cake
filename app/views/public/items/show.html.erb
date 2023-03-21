@@ -11,8 +11,12 @@
       <!--金額表示の小数点第一以下を削除する。-->
       <!--金額と「税込」表示を改行させずに表示する。-->
       
-      
-      
+      <% form_with model: @cart_item, url: cart_items_path, local: true do |cart|%>
+       <%= cart.hidden_field:item_id,:value => cart.item_id %>
+       <%= cart.select:amount,*[1..10]%>
+       <%= cart.submit"カートに入れる",class:"btn btn-success"%>
+      <% end %>
+
     </div>
     
   </div>
