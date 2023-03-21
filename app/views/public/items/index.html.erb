@@ -1,2 +1,24 @@
-<h1>Public::Items#index</h1>
-<p>Find me in app/views/public/items/index.html.erb</p>
+<div class="container">
+  <h4>商品一覧</h4>
+  <!--ジャンル検索を実装するなら、「商品一覧」は「（ジャンル名）一覧」で表示できるようにする-->
+  <!--「全x件」が表示できるようにする-->
+  <!--あとでページネーションを追加する-->
+  <div class="d-flex flex-row flex-wrap mb-4">
+    <% @items.each do |items|%>
+     <div class="card border-light" style="width: 20%">
+       <div class="card-body">
+         <%= link_to item_path(items.id),class:"card-img-top" do %>
+          <%= image_tag items.image, size:'150x120' %>
+         <% end %>
+       </div>
+       <div class="card-title">
+         <%= items.name %>
+       </div>
+       <div class="card-title">
+         ¥<%= items.price*1.1 %>
+         <!--計算はできたけど小数点以下第一位が入ってるのであとで修正する。-->
+       </div>
+     </div>
+     <% end %>
+  </div>
+</div>
