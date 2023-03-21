@@ -20,10 +20,10 @@
   
   <table class="table table-bordered">
     <thead>
-      <th scope="col" style="width: 20%">郵便番号</th>
-      <th scope="col" style="width: 30%">住所</th>
-      <th scope="col" style="width: 10%">宛名</th>
-      <th scope="col" style="width: 40%"></th>
+      <th scope="col">郵便番号</th>
+      <th scope="col">住所</th>
+      <th scope="col">宛名</th>
+      <th scope="col" colspan="2"></th>
     </thead>
     <tbody>
       <% @addresses.each do |addresses|%>
@@ -31,8 +31,10 @@
         <td><%= addresses.postal_code %></td>
         <td><%= addresses.address %></td>
         <td><%= addresses.name %></td>
-        <td><%= link_to"編集する",edit_address_path(addresses.id),class:'btn btn-success'%></td>
-        <td><%= link_to"削除する",addresses_path(addresses.id),method: :delete,class:'btn btn-danger'%></td>
+        <td colspan="2">
+          <%= link_to"編集する",edit_address_path(addresses.id),class:'btn btn-success'%>
+          <%= link_to"削除する",addresses_path(addresses.id),method: :delete,class:'btn btn-danger'%>
+        </td>
       </tr>
       <% end %>
     </tbody>
