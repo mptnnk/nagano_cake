@@ -3,7 +3,8 @@ class Public::AddressesController < ApplicationController
   # 配送先登録/一覧画面
   def index
     @address = Address.new
-    @addresses = Address.where(customer_id: current_customer.id)
+    # @addresses = Address.where(customer_id: current_customer.id)
+    @addresses = current_customer.addresses.all
   end
 
   def create

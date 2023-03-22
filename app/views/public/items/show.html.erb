@@ -2,6 +2,7 @@
   <div class="row">
     <div class="col col-sm-3">
       <%= image_tag @item.image, size:'250x250'%>
+      <!--レスポンシブ対応できてないのでサイズ表時の方法を変える必要あり-->
     </div>
     <div class="col col-sm-6">
       <h2><%= @item.name %></h2>
@@ -11,9 +12,9 @@
       <!--金額表示の小数点第一以下を削除する。-->
       <!--金額と「税込」表示を改行させずに表示する。-->
       
-      <% form_with model: @cart_item, url: cart_items_path, local: true do |cart|%>
-       <%= cart.hidden_field:item_id,:value => cart.item_id %>
-       <%= cart.select:amount,*[1..10]%>
+      <%= form_with model: @cart_item, url: cart_items_path, method: :post, local: true do |cart|%>
+       <%= cart.hidden_field:item_id, value: @item.id %>
+       <%= cart.select:amount,*[1..10],include_blank:"個数選択"%>
        <%= cart.submit"カートに入れる",class:"btn btn-success"%>
       <% end %>
 
