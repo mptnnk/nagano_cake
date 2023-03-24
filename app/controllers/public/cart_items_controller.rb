@@ -11,49 +11,18 @@ class Public::CartItemsController < ApplicationController
   
   # カート内商品データ追加
   def create
-    
-    @cart_items = current_customer.cart_items
-    # if cart_items = blank || 
-    
-    # もしカートアイテムが空だったら、アイテムを新規追加する
-    # もしカートアイテムが空じゃなかったら、アイテムのIDが同じものがあればそこにamountを足す
-    # もしカートアイテムが空じゃなかったら、アイテムのIDが同じものがなければアイテムを新規追加する
-    
-    # もしカートアイテムが空だったら、またははアイテムIDの同じものがなければ、アイテムを新規追加する
-    # もしカートアイテムが空じゃなく、かつ、アイテムIDの同じものがあったら、amountを足す
-    
-    if @cart_items = blank?
-      @cart_item.save
-      redirect_to cart_items_path
-    else
-      
-    
-    @cart_items = current_customer.cart_items
-    if @cart_items.blank?
-      @cart_item = current_customer.cart_items.build(item_id: params[:cart_item][:item_id],amount: params[:cart_item][:amount])
-    else
-      @cart_item.amount += params[:cart_item][:amount].to_i
+    @cart_item = current_customer.cart_items.build(cart_item_params)
+    @cart_items = current_customer.cart_items.all
+    @cart_items.each do |cart_item|
+      if cart_item.item_id == @cart_item.item_id
+        new_amount = cart_item.amount + @cart_item.amount
+        cart_item.update_attribute(:amount,new_amount)
+        @cart_item.delete
+      end
     end
-    if @cart_items.save
-      flash[:notice]="注文商品を追加しました"
-      redirect_to cart_items_path
-    else
-      @item = Item.find_by(id: params[:cart_item][:item_id])
-      redirect_to item_path(@item.id)
-    end
+    @cart_item.save
+    redirect_to cart_items_path,notice:"商品を追加しました"
   end
-end
-    # @cart_item = current_customer.cart_items.build(cart_item_params)
-    # @cart_items = current_customer.cart_items
-    # @cart_items.each do |cart_item|
-    #   if cart_item.item_id == @cart_item.item_id
-    #     new_amount = cart_item.amount + @cart_item.amount
-    #     cart_item.update_attribute(:amount, new_amount)
-    #     @cart_item.delete
-    # #   end
-    # @cart_item.save
-    # redirect_to(cart_items_path)and return
-    # end
   
   # カート内商品データ更新
   def update
@@ -70,7 +39,7 @@ end
   def destroy
     @cart_item = CartItem.find(params[:id])
     if @cart_item.destroy
-      flash[:notice]="注文商品を削除しました"
+      flash[:notice]="商品を削除しました"
       redirect_to cart_items_path
     end
   end
