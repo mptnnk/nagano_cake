@@ -2,7 +2,11 @@
   <%= form_with model: @order, url: orders_path, method: :post, local:true do |order|%>
   
   <h4>支払方法</h4>
+  <%= order.radio_button:payment_method,Order.payment_methods.key(0)%>
+  <%= order.label:payment_method_credit,Order.payment_methods_i18n[:credit]%>
   
+  <%= order.radio_button:payment_method,Order.payment_methods.key(1)%>
+  <%= order.label:payment_method_bank,Order.payment_methods_i18n[:bank]%>
   
   <h4>お届け先</h4>
   
