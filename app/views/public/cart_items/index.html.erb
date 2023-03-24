@@ -36,7 +36,8 @@
      <!--1商品ずつの削除ボタンは正常に作動-->
     </tr>
   </tbody>
-   <% @total_price = @total_price + cart_item.subtotal %>
+  <% @total_price = @total_price + cart_item.subtotal %>
+  <!--each文の中で合計金額を表示させずに計算だけしておいて後で呼び出す-->
   <% end %>
   <% end %>
   
@@ -51,7 +52,6 @@
       <tr>
        <th class="text-center">合計金額</th>
        <td class="text-right"><%= (@total_price).to_s(:delimited) %></td>
-       <!--2商品あったら合計金額が2回出てくる-->
       </tr>
     </table>
    </div>

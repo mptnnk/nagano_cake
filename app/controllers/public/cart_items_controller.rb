@@ -28,10 +28,9 @@ class Public::CartItemsController < ApplicationController
   def update
     @cart_item = CartItem.find(params[:id])
     if @cart_item.update(cart_item_params)
-      flash[:notice]="注文個数を変更しました"
-      redirect_to cart_items_path
+      redirect_to cart_items_path,notice:"注文個数を変更しました"
     else
-      render:index
+      render:index,notice:"注文個数の変更ができませんでした"
     end
   end
   
