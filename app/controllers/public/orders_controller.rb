@@ -1,6 +1,11 @@
 class Public::OrdersController < ApplicationController
   # 注文情報入力画面（支払方法・配送先選択）
   def new
+    @order = Order.new
+  end
+  
+  def create
+    @order = Order.new(params[:order_params])
   end
 
   # 注文情報確認画面
@@ -21,5 +26,11 @@ class Public::OrdersController < ApplicationController
 
   # 注文履歴詳細画面
   def show
+  end
+  
+  private
+  
+  def order_params
+    params.require(:order).permit(:shipping_cost,:total_payment,:payment_method,:postal_code,:address,:name,:status).merge(customer_id:current_customer.id)
   end
 end
