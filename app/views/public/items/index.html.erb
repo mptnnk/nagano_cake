@@ -15,8 +15,7 @@
          <%= items.name %>
        </div>
        <div class="card-title">
-         ¥<%= items.price*1.1 %>
-         <!--計算はできたけど小数点以下第一位が入ってるのであとで修正する。-->
+         ¥<%= items.with_tax_price %>
        </div>
      </div>
      <% end %>
