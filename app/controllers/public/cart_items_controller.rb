@@ -5,10 +5,44 @@ class Public::CartItemsController < ApplicationController
     @cart_item = CartItem.new
     # @cart_items = CartItem.where(customer_id: current_customer.id)
     @cart_items = current_customer.cart_items
+    @total_price = 0
   end
+  
   
   # カート内商品データ追加
   def create
+    
+    @cart_items = current_customer.cart_items
+    # if cart_items = blank || 
+    
+    # もしカートアイテムが空だったら、アイテムを新規追加する
+    # もしカートアイテムが空じゃなかったら、アイテムのIDが同じものがあればそこにamountを足す
+    # もしカートアイテムが空じゃなかったら、アイテムのIDが同じものがなければアイテムを新規追加する
+    
+    # もしカートアイテムが空だったら、またははアイテムIDの同じものがなければ、アイテムを新規追加する
+    # もしカートアイテムが空じゃなく、かつ、アイテムIDの同じものがあったら、amountを足す
+    
+    if @cart_items = blank?
+      @cart_item.save
+      redirect_to cart_items_path
+    else
+      
+    
+    @cart_items = current_customer.cart_items
+    if @cart_items.blank?
+      @cart_item = current_customer.cart_items.build(item_id: params[:cart_item][:item_id],amount: params[:cart_item][:amount])
+    else
+      @cart_item.amount += params[:cart_item][:amount].to_i
+    end
+    if @cart_items.save
+      flash[:notice]="注文商品を追加しました"
+      redirect_to cart_items_path
+    else
+      @item = Item.find_by(id: params[:cart_item][:item_id])
+      redirect_to item_path(@item.id)
+    end
+  end
+end
     # @cart_item = current_customer.cart_items.build(cart_item_params)
     # @cart_items = current_customer.cart_items
     # @cart_items.each do |cart_item|
@@ -20,7 +54,6 @@ class Public::CartItemsController < ApplicationController
     # @cart_item.save
     # redirect_to(cart_items_path)and return
     # end
-  end
   
   # カート内商品データ更新
   def update
@@ -28,6 +61,8 @@ class Public::CartItemsController < ApplicationController
     if @cart_item.update(cart_item_params)
       flash[:notice]="注文個数を変更しました"
       redirect_to cart_items_path
+    else
+      render:index
     end
   end
   
@@ -42,10 +77,11 @@ class Public::CartItemsController < ApplicationController
   
   # カート内商品データ削除（全て）
   def destroy_all
-    # @cart_items = CartItem.where(customer_id: current_customer.id)
-    current_customer.cart_items.destroy_all
-    flash[:notice]="注文商品をすべて削除しました"
-    redirect_to cart_items_path
+    if current_customer.cart_items.destroy_all
+      redirect_to cart_items_path
+    else
+      render:index
+    end
   end
   
   def cart_item_params

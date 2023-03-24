@@ -1,61 +1,62 @@
 <div class="container">
-　<div class="row">
-　  <h4 class="col">ショッピングカート</h4>
-　  <div class="col float-right">
-　    <%= link_to"カートを空にする",cart_items_destroy_all_path,method: :delete,class:'btn btn-danger'%>
-　    <!--destroy_allに飛ばしたいのにdestroyのアクションへ飛んでしまう件-->
-　  </div>
-　</div>
-
-  <table class="table table-bordered mt-3">
-    <thead>
-      <tr>
-        <th>商品名</th>
-        <th>単価（税込）</th>
-        <th>数量</th>
-        <th>小計</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @cart_items.each do |cart_items| %>
-       <%= form_with model: cart_items, url: cart_items_path, method: :patch, local:true do |cart_update|%>
-       <!--モデルとurlの書き方がなんかおかしいのでupdateできない件-->
-       <tr>
-         <td>
-           <%= image_tag cart_items.item.image, size:'50x50' %>
-           <%= cart_items.item.name %>
-         </td>
-         <td><%= cart_items.item.price %></td>
-         <td>
-           <%= cart_update.select:amount,*[1..10],selected: cart_items.amount %>
-           <%= cart_update.submit"変更",class:'btn btn-success'%>
-         </td>
-         <td>小計（単価×数量）</td>
-         <td><%= link_to"削除する",cart_item_path(cart_items.id),method: :delete,class:'btn btn-danger'%></td>
-       </tr>
-       <% end %>
-      <% end %>
-    </tbody>
-  </table>
-</div>
-
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <%= link_to"買い物を続ける",root_path,class:'btn btn-primary'%>
-    </div>
-    <div class="col">
-      <table class="table table-borderd">
-        <tr>
-         <th>合計金額</th>
-         <td></td>
-        </tr>
-      </table>
-    </div>
-  </div>
-</div>
-
-<div style="text-align:center">
-  <%= link_to"情報入力に進む",new_order_path,class:'btn btn-success'%>
+ <div class="row">
+  <h4 class="col">ショッピングカート</h4>
+  <%= link_to"カートを空にする",cart_items_destroy_all_path, method: :delete, class:'btn btn-danger'%>
+  <!--destroy_allのアクションに行きたいのにdestroyに行ってしまう-->
+ </div>
+ 
+ <table class="table table-bordered mt-3">
+  <thead>
+    <tr>
+     <th>商品名</th>
+     <th>単価（税込）</th>
+     <th>数量</th>
+     <th>小計</th>
+     <th></th>
+    </tr>
+  </thead>
+  
+  <% @cart_items.each do |cart_item|%>
+  <%= form_with model: cart_item, url: cart_item_path(cart_item.id),local:true do |cart_update|%>
+  <!--カート内商品の個数変更は正常に作動-->
+  <tbody>
+    <tr>
+     <td>
+      <%= image_tag cart_item.item.image, size:'50x50'%>
+      <%= cart_item.item.name %>
+     </td>
+     <td><%= cart_item.item.with_tax_price %></td>
+     <td>
+      <%= cart_update.select:amount,*[1..10],selected:cart_item.amount %>
+      <%= cart_update.submit"変更",class:'btn btn-success'%>
+     </td>
+     <td><%= cart_item.subtotal %></td>
+     <td><%= link_to"削除する",cart_item_path(cart_item.id),method: :delete, class:'btn btn-danger'%></td>
+     <!--1商品ずつの削除ボタンは正常に作動-->
+    </tr>
+  </tbody>
+  <% end %>
+  <% end %>
+  
+ </table>
+ 
+ <div class="row">
+   <div class="col">
+     <%= link_to"買い物を続ける",root_path,class:'btn btn-primary' %>
+   </div>
+   <% @cart_items.each do |cart_item|%>
+   <table class="table table-bordered">
+     <tr>
+      <th>合計金額</th>
+      <td><%= @total_price += cart_item.subtotal %></td>
+      <!--2商品あったら合計金額が2回出てくる-->
+     </tr>
+   </table>
+   <% end %>
+ </div>
+ 
+ <div style="text-align:center">
+   <%= link_to"情報入力に進む",new_order_path,class:'btn btn-success'%>
+ </div>
+ 
 </div>

@@ -10,8 +10,10 @@ Rails.application.routes.draw do
   }
 
   scope module: :public do
+    # controller:homes
     root to:'homes#top'
     get '/about'=>'homes#about',as:"about"
+    
     # controller:customers
     get '/customers/my_page'=>'customers#show'
     get '/customers/information/edit'=>'customers#edit'
