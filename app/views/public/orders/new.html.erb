@@ -1,5 +1,5 @@
 <div class="container">
-  <%= form_with model: @order, url: orders_path, method: :post, local:true do |order|%>
+  <%= form_with model: @order, url: orders_confirm_path, method: :post, local:true do |order|%>
   
   <div class="my-3">
    <h4>支払方法</h4>
@@ -34,20 +34,24 @@
       <%= order.radio_button:select_address, 2 %>
       <%= order.label:select_address,"新しいお届け先"%>
       <div class="ml-4">
-        <%= order.label:postal_code,"郵便番号"%>
+        <%= order.label:postal_code,"郵便番号（ハイフンなし）"%>
         <%= order.text_field:postal_code %>
       </div>
       <div class="ml-4">
-        <%= order.label:address,"住　　所"%>
+        <%= order.label:address,"住所"%>
         <%= order.text_area:address,size:"50x1"%>
       </div>
+      <div class="ml-4">
+        <%= order.label:name,"宛名"%>
+        <%= order.text_field:name %>
+      </div>
+    </div>
+    
+    <div class="mb-3" style="text-align:center">
+      <%= order.submit"確認画面に進む",class:"btn btn-primary"%>
     </div>
   
   <% end %>
-  </div>
-  
-  <div class="mb-3" style="text-align:center">
-    <%= link_to"確認画面へ進む",orders_confirm_path,class:'btn btn-primary'%>
   </div>
   
 </div>
