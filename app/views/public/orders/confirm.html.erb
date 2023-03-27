@@ -1,7 +1,8 @@
 <div class="container">
-  <div class="row">
-    <table class="table table-bordered">
-      <h4>注文情報確認</h4>
+  <h4>注文情報確認</h4>
+  <div class="row flex">
+    
+    <table class="table table-bordered" style="width: 75%">
       <thead>
         <tr>
           <th>商品名</th>
@@ -25,26 +26,40 @@
       <% end %>
     </table>
     
-    <table class="table table-bordered">
+    <table class="table table-bordered ml-2" style="width:20%">
       <tr>
        <th>送料</th>
-       <td></td>
-       
+       <td><%= @order.shipping_cost.to_s(:delimited) %></td>
+      </tr>
+      <tr>
        <th>商品合計</th>
-       <td></td>
-       
+       <td><%= @order.total_payment.to_s(:delimited) %></td>
+      </tr>
+      <tr>
        <th>請求合計</th>
-       <td></td>
+       <td><%= (@order.shipping_cost + @order.total_payment).to_s(:delimited) %></td>
       </tr>
     </table>
   </div>
   
   <div class="row">
-    <h4>支払方法</h4>
-    <%= @order.payment_method %>
+    <table class="table table-borderless">
+      <tr>
+        <th style="width: 20%">支払方法</th>
+        <td><%= @order.payment_method %></td>
+      </tr>
+      <tr>
+        <th>お届け先</th>
+        <td>
+          <%= "〒"+@order.postal_code %> <%= @order.address %>
+          <%= @order.name %>
+        </td>
+      </tr>
+    </table>
+    
+    <div class="text-align:center">
+      <%= link_to"注文を確定する",orders_path,method: :post, class:'btn btn-success'%>
+    </div>
+    
   </div>
-  <div class="row">
-    <h4>お届け先</h4>
-  </div>
-  
 </div>

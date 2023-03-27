@@ -17,7 +17,7 @@ class Public::OrdersController < ApplicationController
     @cart_items = current_customer.cart_items
     @order = Order.new(order_params)
     @order.payment_method = params[:order][:payment_method]
-    
+    @order.total_payment = @cart_items.inject(0){|sum,cart_item|sum+cart_item.subtotal}
     @order.shipping_cost = 800
     
     if params[:order][:select_address] == "0"
@@ -30,8 +30,11 @@ class Public::OrdersController < ApplicationController
       @order.postal_code = @address.postal_code
       @order.address = @address.address
       @order.name = @address.name
+    
+    elsif params[:order][:select_address] == "2"
       
     end
+      
   end
 
   # 注文完了画面
@@ -57,4 +60,5 @@ class Public::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:shipping_cost,:total_payment,:payment_method,:postal_code,:address,:name,:status).merge(customer_id:current_customer.id)
   end
+  
 end

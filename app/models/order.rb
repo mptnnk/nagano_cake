@@ -1,4 +1,7 @@
 class Order < ApplicationRecord
+  
+  has_many:order_details,dependent: :destroy
+  belongs_to:customer
 
   enum payment_method:{
     credit:0,
@@ -12,8 +15,5 @@ class Order < ApplicationRecord
     preparing_deliver:3,
     deliverd:4
   }
-  
-  has_many:order_details,dependent: :destroy
-  belongs_to:customer
-  
+
 end
