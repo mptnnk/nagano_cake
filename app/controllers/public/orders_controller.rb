@@ -4,8 +4,8 @@ class Public::OrdersController < ApplicationController
   # 注文情報入力画面（支払方法・配送先選択）
   def new
     if current_customer.cart_items.blank?
-      flash[:alert]="注文する商品をカートに入れてください"
-      redirect_to root_path
+      flash[:notice]="注文する商品をカートに入れてください"
+      redirect_to items_path
     else
       @order = Order.new
       @customer = current_customer
