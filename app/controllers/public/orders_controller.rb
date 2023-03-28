@@ -47,9 +47,18 @@ class Public::OrdersController < ApplicationController
   # 注文確定処理
   def create
     @order = Order.new(order_params)
+    @order.status = 0
     if @order.save
       @cart_items = current_customer.cart_items
-      
+      @cart_items.each do |cart_item|
+        order_detail = OrderDetail.new(order_detail_params)
+        order_detail.order_id = @order.id
+        order_detail.item_id = cart_item.item_id
+        order_detail.amount = cart_item.amount
+        order_detail.order_price = cart_item.item.price
+        order_detail.making_status = 0
+        order_detail.save
+      end
       @cart_items.destroy_all
       redirect_to orders_thanks_path
     else
@@ -59,7 +68,6 @@ class Public::OrdersController < ApplicationController
 
   # 注文履歴画面
   def index
-    @order = Order.find(params[:id])
     @orders = current_customer.orders.all
   end
 
@@ -73,6 +81,10 @@ class Public::OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:shipping_cost,:total_payment,:payment_method,:postal_code,:address,:name,:status).merge(customer_id:current_customer.id)
+  end
+  
+  def order_detail_params
+    params.permit(:order_id,:item_id,:amount,:order_price,:making_status)
   end
 
 end

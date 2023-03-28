@@ -1,0 +1,49 @@
+<div class="container">
+  <% if @orders.blank? %>
+   <h4 class="col mb-3" style="text-align:center">
+     注文履歴はありません
+   </h4>
+   <div class="col mt-3 mb-3" style="text-align:center">
+     <%= link_to"商品一覧",items_path, class:'btn btn-success'%>
+   </div>
+  
+  <% else %>
+  
+  <div class="row">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>注文日</th>
+          <th>配送先</th>
+          <th>注文商品</th>
+          <th>支払金額</th>
+          <th>ステータス</th>
+          <th>注文詳細</th>
+        </tr>
+      </thead>
+      <% @orders.each do |order|%>
+      <tbody>
+        <tr>
+          <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+          <td class="small">
+            <%= "〒"+order.postal_code %>
+            <%= order.address %><br>
+            <%= order.name %>
+          </td>
+          <td>
+             
+          </td>
+          <td>
+            
+          </td>
+          <td>
+            <%= order.status %>
+          </td>
+        </tr>
+      </tbody>
+      <% end %>
+    </table>
+  </div>
+ 
+ <% end %>
+</div>
