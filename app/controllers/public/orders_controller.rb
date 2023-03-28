@@ -51,7 +51,7 @@ class Public::OrdersController < ApplicationController
     if @order.save
       @cart_items = current_customer.cart_items
       @cart_items.each do |cart_item|
-        order_detail = OrderDetail.new(order_detail_params)
+        order_detail = OrderDetail.new
         order_detail.order_id = @order.id
         order_detail.item_id = cart_item.item_id
         order_detail.amount = cart_item.amount
@@ -81,10 +81,6 @@ class Public::OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:shipping_cost,:total_payment,:payment_method,:postal_code,:address,:name,:status).merge(customer_id:current_customer.id)
-  end
-  
-  def order_detail_params
-    params.permit(:order_id,:item_id,:amount,:order_price,:making_status)
   end
 
 end
