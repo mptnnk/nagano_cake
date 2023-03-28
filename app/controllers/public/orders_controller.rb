@@ -57,7 +57,7 @@ class Public::OrdersController < ApplicationController
         order_detail.amount = cart_item.amount
         order_detail.order_price = cart_item.item.price
         order_detail.making_status = 0
-        order_detail.save
+        order_detail.save!
       end
       @cart_items.destroy_all
       redirect_to orders_thanks_path

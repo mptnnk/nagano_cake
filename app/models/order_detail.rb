@@ -6,6 +6,6 @@ class OrderDetail < ApplicationRecord
     production_comp:3
   }
   
-  belongs_to:orders
-  belongs_to:items
+  belongs_to:order
+  belongs_to:item
 end
