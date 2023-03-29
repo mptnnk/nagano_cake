@@ -20,9 +20,8 @@
           </button>
           
           <% if customer_signed_in? %>
-           <span>ようこそ、<%= current_customer.last_name %><%= current_customer.first_name %>さん！</span>
+           <span>ようこそ、<%= current_customer.last_name %>さん！</span>
           <% end %>
-          <!--名字を統一して登録しちゃったので下の名前も表示させたけどあとで消す-->
 
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">

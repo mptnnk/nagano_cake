@@ -33,15 +33,15 @@
     <table class="table table-bordered ml-2" style="width: 60%">
       <tr>
         <th class="table-active">商品合計</th>
-        <td><%= (@order.total_payment - @order.shipping_cost).to_s(:delimited) %></td>
+        <td><%= (@order.total_payment - @order.shipping_cost).to_s(:delimited) %>円</td>
       </tr>
       <tr>
         <th class="table-active">配送料</th>
-        <td><%= @order.shipping_cost %></td>
+        <td><%= @order.shipping_cost %>円</td>
       </tr>
       <tr>
         <th class="table-active">ご請求額</th>
-        <td><%= @order.total_payment.to_s(:delimited) %></td>
+        <td><%= @order.total_payment.to_s(:delimited) %>円</td>
       </tr>
     </table>
     </div>
@@ -63,9 +63,9 @@
       <tbody>
         <tr>
           <td><%= order_detail.item.name %></td>
-          <td><%= order_detail.item.with_tax_price %></td>
-          <td><%= order_detail.amount %></td>
-          <td><%= (order_detail.item.with_tax_price * order_detail.amount).to_s(:delimited) %></td>
+          <td><%= order_detail.item.with_tax_price %>円</td>
+          <td><%= order_detail.amount %>個</td>
+          <td><%= (order_detail.item.with_tax_price * order_detail.amount).to_s(:delimited) %>円</td>
         </tr>
       </tbody>
       <% end %>

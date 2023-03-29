@@ -5,10 +5,10 @@
       <!--レスポンシブ対応できてないのでサイズ表示の方法を変える必要あり-->
     </div>
     <div class="col col-sm-6">
-      <h2><%= @item.name %></h2>
-      <h4><%= @item.introduction %></h4>
+      <h4><%= @item.name %></h4>
+      <p><%= @item.introduction %></p>
       
-      <h3>￥<%= @item.with_tax_price %></h3><span>（税込）</span>
+      <h5>￥<%= @item.with_tax_price %></h5><span>（税込）</span>
       
       <%= form_with model: @cart_item, url: cart_items_path, method: :post, local: true do |cart|%>
        <%= cart.hidden_field:item_id, value: @item.id %>

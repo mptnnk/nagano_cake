@@ -56,7 +56,7 @@ class Public::OrdersController < ApplicationController
         order_detail.amount = cart_item.amount
         # order_detail.order_price = cart_item.item.price
         # item.priceは税抜価格
-        # order_detail.making_status = 0
+        order_detail.making_status = 0
         order_detail.save!
       end
       @cart_items.destroy_all
