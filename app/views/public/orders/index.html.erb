@@ -10,6 +10,7 @@
   <% else %>
   
   <div class="row">
+    <h4>注文履歴一覧</h4>
     <table class="table table-bordered">
       <thead>
         <tr>
@@ -30,7 +31,7 @@
             <%= order.address %><br>
             <%= order.name %>
           </td>
-          <td class="small">
+          <td class="small" style="width: 15%">
             <% order.order_details.each do |order_detail|%>
              <%= order_detail.item.name %>
             <% end %>

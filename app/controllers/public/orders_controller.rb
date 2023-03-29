@@ -37,7 +37,6 @@ class Public::OrdersController < ApplicationController
     elsif params[:order][:select_address] == "2"
 
     end
-
   end
 
   # 注文完了画面
@@ -54,9 +53,10 @@ class Public::OrdersController < ApplicationController
         order_detail = OrderDetail.new
         order_detail.order_id = @order.id
         order_detail.item_id = cart_item.item_id
-        order_detail.amount = cart_item.amount
-        order_detail.order_price = cart_item.item.price
-        order_detail.making_status = 0
+        # order_detail.amount = cart_item.amount
+        # order_detail.order_price = cart_item.item.price
+        # item.priceは税抜価格
+        # order_detail.making_status = 0
         order_detail.save!
       end
       @cart_items.destroy_all
@@ -73,8 +73,13 @@ class Public::OrdersController < ApplicationController
 
   # 注文履歴詳細画面
   def show
-    @order = Order.find(params[:id])
-    @order_details = @order.order_details.all
+    if params[:id] == "confirm"
+      flash[:notice]="注文確定画面は再読み込みできません。もう一度やり直してください。"
+      redirect_to new_order_path
+    else
+     @order = Order.find(params[:id])
+    # @order_details = @order.order_details.all
+    end
   end
 
   private
