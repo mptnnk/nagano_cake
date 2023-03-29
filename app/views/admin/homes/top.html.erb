@@ -9,6 +9,14 @@
         <th>注文ステータス</th>
       </tr>
     </thead>
-    
+    <% @order_details.each do |order_detail|%>
+    <tbody>
+      <tr>
+        <td><%= order_detail.created_at.strftime('%Y/%m/%d')%></td>
+        <td></td>
+        <td><%= order_detail.customer.name %></td>
+      </tr>
+    </tbody>
+    <% end %>
   </table>
 </div>

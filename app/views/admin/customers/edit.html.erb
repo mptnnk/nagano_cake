@@ -1,6 +1,6 @@
 <div class="container">
   <h4><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h4>
-  <%= form_with model: @customer,url: admin_customers_path, local:true do |ce|%>
+  <%= form_with model: @customer,url: admin_customer_path(@customer.id), method: :patch, local:true do |ce|%>
   <table class="table">
     <tr>
       <th>会員ID</th>

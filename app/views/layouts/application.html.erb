@@ -13,7 +13,7 @@
   <body class="d-flex flex-column">
     <header class="shadow-sm mt-0">
       <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-white bg-light">
-        <div class="container">
+        <div class="container-fluid">
           <div class="navbar-brand"><%= link_to"ながのCAKE",root_path,style:"color:black" %></div>
           <button class="navbar-toggler" type="button" style="background-color: #696969" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expand="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -81,12 +81,18 @@
     </header>
 
     <main>
-      <p id="notice"><%= notice %></p>
+      <div class="ml-5 mt-2 text-success">
+        <p id="notice"><%= notice %></p>
+      </div>
+      <div class="ml-5 mt-2 text-danger">
+        <p id="alert"><%= alert %></p>
+      </div>
+      
       <%= yield %>
     </main>
 
     <footer class="footer mt-auto py-3 bg-light">
-      <div class="container">
+      <div class="container-fluid">
         <%= link_to"管理者ログイン",new_admin_session_path,style:"color:green" %>
       </div>
     </footer>

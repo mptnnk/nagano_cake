@@ -53,7 +53,7 @@ class Public::OrdersController < ApplicationController
         order_detail = OrderDetail.new
         order_detail.order_id = @order.id
         order_detail.item_id = cart_item.item_id
-        # order_detail.amount = cart_item.amount
+        order_detail.amount = cart_item.amount
         # order_detail.order_price = cart_item.item.price
         # item.priceは税抜価格
         # order_detail.making_status = 0
@@ -74,7 +74,7 @@ class Public::OrdersController < ApplicationController
   # 注文履歴詳細画面
   def show
     if params[:id] == "confirm"
-      flash[:notice]="注文確定画面は再読み込みできません。もう一度やり直してください。"
+      flash[:alert]="注文確定画面は再読み込みできません。もう一度やり直してください。"
       redirect_to new_order_path
     else
      @order = Order.find(params[:id])
