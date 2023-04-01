@@ -14,7 +14,7 @@
     <header class="shadow-sm mt-0">
       <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-white bg-light">
         <div class="container-fluid">
-          <div class="navbar-brand"><%= link_to"ながのCAKE",root_path,style:"color:black" %></div>
+          <div class="navbar-brand"><%= link_to"ながのCAKE",root_path, style:"color:black", class:"border border-dark" %></div>
           <button class="navbar-toggler" type="button" style="background-color: #696969" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expand="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -28,7 +28,7 @@
             <!--管理者ログイン時-->
               <% if admin_signed_in? %>
                <li class="nav-link">
-                 <%= link_to"商品一覧",admin_items_path,style:"color:black" %>
+                 <%= link_to"商品一覧",admin_items_path, style:"color:black", class:"border border-rounded" %>
                </li>
                <li class="nav-link">
                  <%= link_to"会員一覧",admin_customers_path,style:"color:black" %>

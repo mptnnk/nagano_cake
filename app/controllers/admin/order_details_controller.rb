@@ -16,6 +16,7 @@ class Admin::OrderDetailsController < ApplicationController
       flash[:notice]="ステータスを発送準備中に更新しました"
       redirect_to admin_order_path(@order.id)
     else
+      flash[:notice]="製作ステータスを更新しました"
       redirect_to admin_order_path(@order.id)
     end
   end
