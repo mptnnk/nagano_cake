@@ -8,7 +8,7 @@
     </tr>
     <tr>
       <th>住所</th>
-      <td><%= address.text_area:address,size:"50x1" %></td>
+      <td><%= address.text_area:address,size:"50x2" %></td>
     </tr>
     <tr>
       <th>宛名</th>
@@ -28,7 +28,7 @@
     <tbody>
       <% @addresses.each do |addresses|%>
       <tr>
-        <td><%= addresses.postal_code %></td>
+        <td><%= "〒"+addresses.postal_code.to_s.insert(3,"-") %></td>
         <td><%= addresses.address %></td>
         <td><%= addresses.name %></td>
         <td colspan="2">

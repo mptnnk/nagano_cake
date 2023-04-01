@@ -1,6 +1,6 @@
 <div class="container">
   <h4>注文履歴詳細</h4>
-  
+
   <div class="row">
     <div class="col">
     <h6>注文情報</h6>
@@ -12,7 +12,7 @@
       <tr>
         <th class="table-active">配送先</th>
         <td>
-          <%= "〒"+@order.postal_code %><br>
+          <%= "〒"+@order.postal_code.to_s.insert(3,"-") %><br>
           <%= @order.address %><br>
           <%= @order.name %>
         </td>
@@ -27,7 +27,7 @@
       </tr>
     </table>
     </div>
-    
+
     <div class="col">
     <h6>請求情報</h6>
     <table class="table table-bordered ml-2" style="width: 60%">
@@ -46,7 +46,7 @@
     </table>
     </div>
   </div>
-  
+
   <div class="row">
     <div class="col">
     <h6>注文内容</h6>
