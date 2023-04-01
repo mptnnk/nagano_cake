@@ -49,7 +49,7 @@ class Public::SessionsController < Devise::SessionsController
     # アカウントを取得できなかった婆、このメソッドを終了する（！は否定演算子）
     if @customer.valid_password?(params[:customer][:password]) && @customer.is_deleted == true
     # 取得したアカウントのパスワードと入力されたパスワードが一致、かつis_deletedがtrue(=退会済み)の場合
-      flash[:notice]="退会済みです。再登録のうえご利用ください。"
+      flash[:alert]="退会済みです。再登録のうえご利用ください。"
       redirect_to new_customer_registration_path
     end
   end
