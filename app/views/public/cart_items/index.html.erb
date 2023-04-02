@@ -31,7 +31,7 @@
   <tbody class="text-center">
     <tr>
      <td>
-      <%= image_tag cart_item.item.cake_image, size:'50x50'%>
+      <%= image_tag cart_item.item.get_cake_image, size:'50x50'%>
       <%= cart_item.item.name %>
      </td>
      <td><%= (cart_item.item.with_tax_price).to_s(:delimited) %></td>

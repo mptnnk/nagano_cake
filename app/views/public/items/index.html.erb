@@ -12,12 +12,12 @@
         <% end %>
         <span class="item-list-count">全<%= @items_count %>件</span>
       </h4>
-      
+
       <div class="item-list">
         <% @items.each do |item|%>
         <div class="item-list-contents">
           <%= link_to item_path(item.id) do %>
-           <%= image_tag item.get_image, width: '20%', height: '20%'%>
+           <%= image_tag item.get_cake_image, width: '20%', height: '20%'%>
           <% end %>
           <%= item.name %>
           ¥<%= item.with_tax_price %>
@@ -35,7 +35,7 @@
 <!--     <div class="card border-light" style="width: 20%">-->
 <!--       <div class="card-body">-->
 <!--         <%= link_to item_path(items.id),class:"card-img-top" do %>-->
-<!--          <%= image_tag items.get_image, size:'150x120' %>-->
+<!--          <%= image_tag items.get_cake_image, size:'150x120' %>-->
 <!--         <% end %>-->
 <!--       </div>-->
 <!--       <div class="card-title">-->

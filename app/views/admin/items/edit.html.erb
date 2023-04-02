@@ -1,10 +1,13 @@
 <div class="container">
   <h4>商品編集</h4>
-  <%= form_with model: @item,url: admin_item_path(@item) , local:true do |item|%>
+  <%= form_with model: @item,url: admin_item_path(@item) , multipart: true, local:true do |item|%>
   <table class="table table-borderless">
       <tr>
         <th>商品画像</th>
-        <td><%= item.file_field:cake_image,accept:"image/*"%></td>
+        <td>
+          <input class="form-control-file cake_image" accept="image/*" type="file" name="item[cake_image]" id="item_cake_image"/>
+        </td>
+        
       </tr>
       <tr>
         <th>商品名</th>
