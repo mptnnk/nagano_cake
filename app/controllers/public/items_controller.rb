@@ -6,7 +6,7 @@ class Public::ItemsController < ApplicationController
     if params[:genre_id]
       @genre = Genre.find(params[:genre_id])
       @items = @genre.items.where(is_active: true).page(params[:page])
-      @items_count = @genre.items.count
+      @items_count = @genre.items.where(is_active: true).count
     # elsif params[:search]
     #   @search = Item.search(params[:search])
     #   @items = @search.page(params[:page])
@@ -20,6 +20,7 @@ class Public::ItemsController < ApplicationController
   # 商品詳細
   def show
     @item = Item.find(params[:id])
+    @genres = Genre.all
     @cart_item = CartItem.new
   end
   
