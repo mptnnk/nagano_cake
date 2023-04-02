@@ -5,14 +5,14 @@ class Public::ItemsController < ApplicationController
     # @items = Item.all
     if params[:genre_id]
       @genre = Genre.find(params[:genre_id])
-      @items = @genre.items.page(params[:page])
+      @items = @genre.items.where(is_active: true).page(params[:page])
       @items_count = @genre.items.count
     # elsif params[:search]
     #   @search = Item.search(params[:search])
     #   @items = @search.page(params[:page])
     #   @items_count = @items.count
     else
-      @items = Item.page(params[:page])
+      @items = Item.where(is_active: true).page(params[:page])
       @items_count = Item.count
     end
   end
