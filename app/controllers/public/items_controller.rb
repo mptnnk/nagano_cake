@@ -4,13 +4,13 @@ class Public::ItemsController < ApplicationController
     @genres = Genre.all
     # @items = Item.all
     if params[:genre_id]
-      @item_genre = Genre.find(params[:gernre_id]).items
-      @items = @item_genre.page(params[:page])
-      @items_count = @items_genre.count
-    elsif params[:search]
-      @search = Item.search(params[:search])
-      @items = @search.page(params[:page])
-      @items_count = @items.count
+      @genre = Genre.find(params[:genre_id])
+      @items = @genre.items.page(params[:page])
+      @items_count = @genre.items.count
+    # elsif params[:search]
+    #   @search = Item.search(params[:search])
+    #   @items = @search.page(params[:page])
+    #   @items_count = @items.count
     else
       @items = Item.page(params[:page])
       @items_count = Item.count

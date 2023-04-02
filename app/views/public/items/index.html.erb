@@ -1,24 +1,50 @@
-<%= render 'genre', genres: @genres %>
 <div class="container">
-  <h4>商品一覧</h4><span>全XX件</span>
+  <div class="row">
+    <div class="col-md-2">
+      <%= render 'genre', genres: @genres %>
+    </div>
+    <div class="item-list-title col-6">
+      <h4>
+        <% if params[:genre_id] %>
+         <%= @genre.name %>一覧
+        <% else %>
+         商品一覧
+        <% end %>
+        <span class="item-list-count">全<%= @items_count %>件</span>
+      </h4>
+      
+      <div class="item-list">
+        <% @items.each do |item|%>
+        <div class="item-list-contents">
+          <%= link_to item_path(item.id) do %>
+           <%= image_tag item.get_image, width: '20%', height: '20%'%>
+          <% end %>
+          <%= item.name %>
+          ¥<%= item.with_tax_price %>
+        </div>
+        <% end %>
+      </div>
+
+<!--<div class="container">-->
+<!--  <h4>商品一覧</h4><span>全XX件</span>-->
   <!--ジャンル検索を実装するなら、「商品一覧」は「（ジャンル名）一覧」で表示できるようにする-->
   <!--「全x件」が表示できるようにする-->
   <!--あとでページネーションを追加する-->
-  <div class="d-flex flex-row flex-wrap mb-4">
-    <% @items.each do |items|%>
-     <div class="card border-light" style="width: 20%">
-       <div class="card-body">
-         <%= link_to item_path(items.id),class:"card-img-top" do %>
-          <%= image_tag items.get_image, size:'150x120' %>
-         <% end %>
-       </div>
-       <div class="card-title">
-         <%= items.name %>
-       </div>
-       <div class="card-title">
-         ¥<%= items.with_tax_price %>
-       </div>
-     </div>
-     <% end %>
-  </div>
-</div>
+<!--  <div class="d-flex flex-row flex-wrap mb-4">-->
+<!--    <% @items.each do |items|%>-->
+<!--     <div class="card border-light" style="width: 20%">-->
+<!--       <div class="card-body">-->
+<!--         <%= link_to item_path(items.id),class:"card-img-top" do %>-->
+<!--          <%= image_tag items.get_image, size:'150x120' %>-->
+<!--         <% end %>-->
+<!--       </div>-->
+<!--       <div class="card-title">-->
+<!--         <%= items.name %>-->
+<!--       </div>-->
+<!--       <div class="card-title">-->
+<!--         ¥<%= items.with_tax_price %>-->
+<!--       </div>-->
+<!--     </div>-->
+<!--     <% end %>-->
+<!--  </div>-->
+<!--</div>-->
