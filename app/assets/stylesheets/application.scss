@@ -13,3 +13,18 @@
  *= require_tree .
  *= require_self
  */
+
+.top-image{
+  background-image: image-url("short-cake1.jpg");
+  height: 350px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 10px;
+}
+
+.top-text{
+  height: 350px;
+  line-height: 2.5;
+  padding-top: 20px;
+}
