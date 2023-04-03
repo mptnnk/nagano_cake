@@ -1,65 +1,138 @@
 <div class="container">
-<h2>新規会員登録</h2>
+  <div class="row">
+    <div class="col mt-3">
+      <h4><span class="bg-secondary text-white p-2 rounded">新規会員登録</span></h4>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "public/shared/error_messages", resource: resource %>
 
-  <table class="table table-borderless">
-    <tr>
-      <th>名前</th>
-      <td>(姓)<%= f.text_field:last_name %> (名)<%= f.text_field:first_name %></td>
-    </tr>
-    <tr>
-      <th>フリガナ</th>
-      <td>(セイ)<%= f.text_field:last_name_kana %> (メイ)<%=f.text_field:first_name_kana %></td>
-    </tr>
-    <tr>
-      <th>メールアドレス</th>
-      <td><%= f.email_field:email %></td>
-    </tr>
-    <tr>
-      <th>郵便番号(ハイフンなし)</th>
-      <td><%= f.text_field:postal_code %></td>
-    </tr>
-    <tr>
-      <th>住所</th>
-      <td><%= f.text_area:address,size:"50x1"%></td>
-    </tr>
-    <tr>
-      <th>電話番号(ハイフンなし)</th>
-      <td><%= f.telephone_field:telephone_number %></td>
-    </tr>
-    <tr>
-      <th>
-        パスワード
-        <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> 文字以上)</em><br>
-        <% end %>
-        </th>
-      <td>
-        <%= f.password_field:password %>
-      </td>
-    </tr>
-    <tr>
-      <th>パスワード（確認用）</th>
-      <td><%= f.password_field :password_confirmation %></td>
-    </tr>
-    <th></th>
-    <td><%= f.submit"新規登録",class:'btn btn-success'%></td>
-  </table>
+        <div class="row form-group mt-4">
+          <%= f.label:"名前",class:"col-lg-3 font-weight-bold"%>
+          <%= f.label:"（姓）　",class:"col-xs-2"%>
+          <%= f.text_field:last_name, class:"col-lg-3",placeholder:"令和"%>
+          <%= f.label:"（名）　", class:"col-xs-2"%>
+          <%= f.text_field:first_name, class:"col-lg-3",placeholder:"道子"%>
+        </div>
+
+        <div class="row form-group">
+          <%= f.label:"フリガナ", class:"col-lg-3 font-weight-bold"%>
+          <%= f.label:"（セイ）",class:"col-xs-2"%>
+          <%= f.text_field:last_name_kana, class:"col-lg-3",placeholder:"レイワ"%>
+          <%= f.label:"（メイ）", class:"col-xs-2"%>
+          <%= f.text_field:first_name_kana, class:"col-lg-3",placeholder:"ミチコ"%>
+        </div>
+
+        <div class="row form-group">
+          <%= f.label:"メールアドレス", class:"col-lg-3 font-weight-bold"%>
+          <%= f.label:"---------",class:"col-xs-2 text-white"%>
+          <%= f.email_field:email, class:"col-lg-3",placeholder:"sample@example.com"%>
+        </div>
+
+        <div class="row form-group">
+          <%= f.label:"郵便番号（ハイフンなし）", class:"col-lg-3 font-weight-bold"%>
+          <%= f.label:"---------",class:"col-xs-2 text-white"%>
+          <%= f.text_field:postal_code, class:"col-lg-3",placeholder:"0000000"%>
+        </div>
+
+        <div class="row form-group">
+          <%= f.label:"住所", class:"col-lg-3 font-weight-bold"%>
+          <%= f.label:"---------",class:"col-xs-2 text-white"%>
+          <%= f.text_area:address, class:"col-md-7",size:"70x1",placeholder:"東京都渋谷区代々木神園町0-0" %>
+        </div>
+
+        <div class="row form-group">
+          <%= f.label:"電話番号", class:"col-lg-3 font-weight-bold"%>
+          <%= f.label:"---------",class:"col-xs-2 text-white"%>
+          <%= f.telephone_field:telephone_number, class:"col-lg-3",placeholder:"00000000000"%>
+        </div>
+
+        <div class="row form-group">
+          <%= f.label:"パスワード（6文字以上）",class:"col-lg-3 font-weight-bold"%>
+          <%= f.label:"---------",class:"col-xs-2 text-white"%>
+          <%= f.password_field:password, class:"col-lg-3"%>
+        </div>
+
+        <div class="row form-group">
+          <%= f.label:"パスワード（確認用）",class:"col-lg-3 font-weight-bold"%>
+          <%= f.label:"---------",class:"col-xs-2 text-white"%>
+          <%= f.password_field:password_confirmation, class:"col-lg-3"%>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3"></div>
+          <div class="d-grid gap-2 col-6 ml-5 mb-3">
+            <%= f.submit "新規登録", class:"btn btn-success d-grid gap-2 col-6"%>
+          </div>
+        </div>
+
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+<!--<div class="container">-->
+<!--<h2>新規会員登録</h2>-->
+
+<!--<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>-->
+<!--  <%= render "public/shared/error_messages", resource: resource %>-->
+
+<!--  <table class="table table-borderless">-->
+<!--    <tr>-->
+<!--      <th>名前</th>-->
+<!--      <td>(姓)<%= f.text_field:last_name %> (名)<%= f.text_field:first_name %></td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <th>フリガナ</th>-->
+<!--      <td>(セイ)<%= f.text_field:last_name_kana %> (メイ)<%=f.text_field:first_name_kana %></td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <th>メールアドレス</th>-->
+<!--      <td><%= f.email_field:email %></td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <th>郵便番号(ハイフンなし)</th>-->
+<!--      <td><%= f.text_field:postal_code %></td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <th>住所</th>-->
+<!--      <td><%= f.text_area:address,size:"50x1"%></td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <th>電話番号(ハイフンなし)</th>-->
+<!--      <td><%= f.telephone_field:telephone_number %></td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <th>-->
+<!--        パスワード-->
+<!--        <% if @minimum_password_length %>-->
+<!--        <em>(<%= @minimum_password_length %> 文字以上)</em><br>-->
+<!--        <% end %>-->
+<!--        </th>-->
+<!--      <td>-->
+<!--        <%= f.password_field:password %>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <th>パスワード（確認用）</th>-->
+<!--      <td><%= f.password_field :password_confirmation %></td>-->
+<!--    </tr>-->
+<!--    <th></th>-->
+<!--    <td><%= f.submit"新規登録",class:'btn btn-success'%></td>-->
+<!--  </table>-->
 
   <!--<div class="field">-->
   <!--  <%= f.label :email %><br />-->
   <!--  <%= f.email_field :email, autofocus: true, autocomplete: "email" %>-->
   <!--</div>-->
 
-  <!--<div class="field">-->
-  <!--  <%= f.label :password %>-->
-  <!--  <% if @minimum_password_length %>-->
-  <!--  <em>(<%= @minimum_password_length %> characters minimum)</em>-->
-  <!--  <% end %><br />-->
-  <!--  <%= f.password_field :password, autocomplete: "new-password" %>-->
-  <!--</div>-->
+<!--  <div class="field">-->
+<!--    <%= f.label :password %>-->
+<!--    <% if @minimum_password_length %>-->
+<!--    <em>(<%= @minimum_password_length %> characters minimum)</em>-->
+<!--    <% end %><br />-->
+<!--    <%= f.password_field :password, autocomplete: "new-password" %>-->
+<!--  </div>-->
 
   <!--<div class="field">-->
   <!--  <%= f.label :password_confirmation %><br />-->
@@ -69,10 +142,10 @@
   <!--<div class="actions">-->
   <!--  <%= f.submit "Sign up" %>-->
   <!--</div>-->
-<% end %>
+<!--<% end %>-->
 
 
-<h3>既に登録済みの方</h3>
-<%= link_to "こちら",new_customer_session_path %>からログインしてください。
-</div>
+<!--<h3>既に登録済みの方</h3>-->
+<!--<%= link_to "こちら",new_customer_session_path %>からログインしてください。-->
+<!--</div>-->
 <!--<%= render "public/shared/links" %>-->
