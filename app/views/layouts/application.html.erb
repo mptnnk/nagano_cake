@@ -6,30 +6,32 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/a30ba0c1da.js" crossorigin="anonymous"></script>
   </head>
 
   <body class="d-flex flex-column">
     <header class="shadow-sm mt-0">
-      <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-white bg-light">
+      <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <div class="navbar-brand"><%= link_to"ながのCAKE",root_path, style:"color:black", class:"border border-dark" %></div>
+          <div class="navbar-brand">
+            <%= link_to"ながのCAKE",root_path, style:"color:black", class:"border border-secondary rounded p-2" %>
+          </div>
           <button class="navbar-toggler" type="button" style="background-color: #696969" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expand="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          
+
           <% if customer_signed_in? %>
-           <span>ようこそ、<%= current_customer.last_name %>さん！</span>
+           <span class="d-flex justify-content-center">ようこそ、<%= current_customer.last_name %>さん！</span>
           <% end %>
 
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <div class="collapse navbar-collapse flex-column" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
             <!--管理者ログイン時-->
               <% if admin_signed_in? %>
                <li class="nav-link">
-                 <%= link_to"商品一覧",admin_items_path, style:"color:black", class:"border border-rounded" %>
+                 <%= link_to"商品一覧",admin_items_path, style:"color:black" %>
                </li>
                <li class="nav-link">
                  <%= link_to"会員一覧",admin_customers_path,style:"color:black" %>
@@ -74,24 +76,33 @@
                </li>
               <% end %>
             </ul>
+
+            <div class="search-form ml-auto">
+             <form class="form-inline">
+               <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+               <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+             </form>
+            </div>
+
           </div>
+
         </div>
       </nav>
 
     </header>
 
-    <main>
+    <main class="container">
       <div class="ml-5 mt-2 text-success">
         <p id="notice"><%= notice %></p>
       </div>
       <div class="ml-5 mt-2 text-danger">
         <p id="alert"><%= alert %></p>
       </div>
-      
+
       <%= yield %>
     </main>
 
-    <footer class="footer mt-auto py-3 bg-light">
+    <footer class="footer mt-auto p-4 bg-light">
       <div class="container-fluid">
         <%= link_to"管理者ログイン",new_admin_session_path,style:"color:green" %>
       </div>
