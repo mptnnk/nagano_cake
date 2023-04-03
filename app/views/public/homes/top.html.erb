@@ -17,9 +17,9 @@
       <div class="mt-3 d-inline-flex flex-row align-items-center">
         <% @items.each do |item|%>
         <div class="item-list">
-          <a class="thumnail">
+          <a class="thumnail pl-2">
            <%= link_to item_path(item.id) do %>
-             <%= image_tag item.get_cake_image, width: '60%', height: '60%'%>
+             <%= image_tag item.get_cake_image, size:'200x150'%>
            <% end %><br>
           </a>
           <div class="mt-2">

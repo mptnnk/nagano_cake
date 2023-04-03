@@ -16,68 +16,68 @@
       <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
           <div class="navbar-brand">
-            <%= link_to"ながのCAKE",root_path, style:"color:black", class:"border border-secondary rounded p-2" %>
+            <%= link_to"ながのCAKE",root_path, style:"color:gray", class:"border border-secondary rounded p-2" %>
           </div>
           <button class="navbar-toggler" type="button" style="background-color: #696969" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expand="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
 
           <% if customer_signed_in? %>
-           <span class="d-flex justify-content-center">ようこそ、<%= current_customer.last_name %>さん！</span>
+           <span class="ml-5">ようこそ、<%= current_customer.last_name %>さん！</span>
           <% end %>
 
           <div class="collapse navbar-collapse flex-column" id="navbarNavDropdown">
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto mb-2">
             <!--管理者ログイン時-->
               <% if admin_signed_in? %>
                <li class="nav-link">
-                 <%= link_to"商品一覧",admin_items_path, style:"color:black" %>
+                 <%= link_to"商品一覧",admin_items_path, style:"color:gray", class:"border border-secondary rounded p-2" %>
                </li>
                <li class="nav-link">
-                 <%= link_to"会員一覧",admin_customers_path,style:"color:black" %>
+                 <%= link_to"会員一覧",admin_customers_path,style:"color:gray", class:"border border-secondary rounded p-2" %>
                </li>
                <li class="nav-link">
-                 <%= link_to"注文履歴一覧",admin_path,style:"color:black" %>
+                 <%= link_to"注文履歴一覧",admin_path,style:"color:gray", class:"border border-secondary rounded p-2" %>
                </li>
                <li class="nav-link">
-                 <%= link_to"ジャンル一覧",admin_genres_path,style:"color:black" %>
+                 <%= link_to"ジャンル一覧",admin_genres_path,style:"color:gray", class:"border border-secondary rounded p-2" %>
                </li>
                <li class="nav-link">
-                 <%= link_to"ログアウト",destroy_admin_session_path,method: :delete,style:"color:black" %>
+                 <%= link_to"ログアウト",destroy_admin_session_path,method: :delete,style:"color:gray", class:"border border-secondary rounded p-2" %>
                </li>
 
             <!--顧客ログイン時-->
               <% elsif customer_signed_in? %>
                <li class="nav-link">
-                 <%= link_to"マイページ",customers_my_page_path,style:"color:black" %>
+                 <%= link_to"マイページ",customers_my_page_path, style:"color:gray", class:"border border-secondary rounded p-2" %>
                </li>
                <li class="nav-link">
-                 <%= link_to"商品一覧",items_path,style:"color:black" %>
+                 <%= link_to"商品一覧",items_path,style:"color:gray", class:"border border-secondary rounded p-2" %>
                </li>
                <li class="nav-link">
-                 <%= link_to"カート",cart_items_path,style:"color:black" %>
+                 <%= link_to"カート",cart_items_path,style:"color:gray", class:"border border-secondary rounded p-2" %>
                </li>
                <li class="nav-link">
-                 <%= link_to"ログアウト",destroy_customer_session_path,method: :delete,style:"color:black" %>
+                 <%= link_to"ログアウト",destroy_customer_session_path,method: :delete,style:"color:gray", class:"border border-secondary rounded p-2" %>
                </li>
               <!--どちらもログインしていない時-->
               <% else %>
                <li class="nav-link">
-                 <%= link_to"About",about_path,style:"color:black" %>
+                 <%= link_to"About",about_path,style:"color:gray", class:"border border-secondary rounded p-2" %>
                </li>
                <li class="nav-link">
-                 <%= link_to"商品一覧",items_path,style:"color:black" %>
+                 <%= link_to"商品一覧",items_path,style:"color:gray", class:"border border-secondary rounded p-2" %>
                </li>
                <li class="nav-link">
-                 <%= link_to"新規登録",new_customer_registration_path,style:"color:black" %>
+                 <%= link_to"新規登録",new_customer_registration_path,style:"color:gray", class:"border border-secondary rounded p-2" %>
                </li>
                <li class="nav-link">
-                 <%= link_to"ログイン",new_customer_session_path,style:"color:black" %>
+                 <%= link_to"ログイン",new_customer_session_path,style:"color:gray", class:"border border-secondary rounded p-2" %>
                </li>
               <% end %>
             </ul>
 
-            <div class="search-form ml-auto">
+            <div class="search-form ml-auto mr-2">
              <form class="form-inline">
                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>

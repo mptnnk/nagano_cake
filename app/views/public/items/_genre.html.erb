@@ -6,7 +6,7 @@
    <% genres.each do |genre|%>
    <tr>
      <td>
-       <%= link_to items_path(genre_id: genre.id) do %>
+       <%= link_to items_path(genre_id: genre.id),style:"color:black" do %>
          <%= genre.name %>
        <% end %>
      </td>
