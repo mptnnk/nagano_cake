@@ -14,6 +14,13 @@
  *= require_self
  */
 
+.page-title{
+  background-color: #ddd;
+  display: inline-block;
+  padding: 5px;
+  border-radius: 10px;
+}
+
 .top-image{
   background-image: image-url("short-cake1.jpg");
   height: 350px;
