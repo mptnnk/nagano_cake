@@ -1,43 +1,55 @@
 <div class="container">
-  <h4>配送先登録／一覧</h4>
-   <%= form_with model: @address, url: addresses_path, method: :post, local: true do |address|%>
-   <table class="table table-borderless table-sm">
-    <tr>
-      <th>郵便番号（ハイフンなし）</th>
-      <td><%= address.text_field:postal_code %></td>
-    </tr>
-    <tr>
-      <th>住所</th>
-      <td><%= address.text_area:address,size:"50x2" %></td>
-    </tr>
-    <tr>
-      <th>宛名</th>
-      <td><%= address.text_field:name %></td>
-      <td><%= address.submit"新規登録",class:'btn btn-success' %></td>
-    </tr>
-   </table>
-   <% end %>
+  <div class="row">
+    <div class="col">
+      <h4 class="page-title">配送先一覧</h4>
 
-  <table class="table table-bordered">
-    <thead>
-      <th scope="col">郵便番号</th>
-      <th scope="col">住所</th>
-      <th scope="col">宛名</th>
-      <th scope="col" colspan="2"></th>
-    </thead>
-    <tbody>
-      <% @addresses.each do |addresses|%>
-      <tr>
-        <td><%= "〒"+addresses.postal_code.to_s.insert(3,"-") %></td>
-        <td><%= addresses.address %></td>
-        <td><%= addresses.name %></td>
-        <td colspan="2">
-          <%= link_to"編集する",edit_address_path(addresses.id),class:'btn btn-success'%>
-          <%= link_to"削除する",address_path(addresses.id), method: :delete,class:'btn btn-danger',"data-confirm"=>"削除しますか？"%>
-          <!--ルートが「DELETE /addresses/:id（パス生成なし）」だったが複数形だとIDを渡せなかった。1つだけ削除したいので単数形で指定するのが正らしい-->
-        </td>
-      </tr>
+      <%= form_with model: @address, url: addresses_path, method: :post, local: true do |address| %>
+
+      <div class="form-group mt-3">
+        <%= address.label:"郵便番号（ハイフンなし）", class:"col-lg-3 font-weight-bold" %>
+        <%= address.text_field:postal_code %>
+      </div>
+
+      <div class="form-group">
+        <%= address.label:"住所", class:"col-lg-3 font-weight-bold" %>
+        <%= address.text_area:address, size:"70x1" %>
+      </div>
+
+      <div class="form-group">
+        <%= address.label:"宛名", class:"col-lg-3 font-weight-bold" %>
+        <%= address.text_field:name %>
+        <span class="d-flex justify-content-end mr-5">
+          <%= address.submit "新規登録", class:'btn btn-success' %>
+        </span>
+      </div>
+
       <% end %>
-    </tbody>
-  </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <table class="table table-bordered mt-2 mb-5">
+      <thead class="table-active text-center">
+        <tr>
+          <th scope="col">郵便番号</th>
+          <th scope="col">住所</th>
+          <th scope="col">宛名</th>
+          <th scope="col" colspan="2"></th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @addresses.each do |addresses|%>
+       <tr>
+         <td><%= "〒"+addresses.postal_code.to_s.insert(3,"-") %></td>
+         <td><%= addresses.address %></td>
+         <td><%= addresses.name %></td>
+         <td class="text-center" colspan="2">
+           <%= link_to "編集する",edit_address_path(addresses.id), class:'btn btn-success' %>　<%= link_to "削除する", address_path(addresses.id), method: :delete, class:'btn btn-danger', "data-confirm"=>"削除しますか？" %>
+         </td>
+       </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+
 </div>
