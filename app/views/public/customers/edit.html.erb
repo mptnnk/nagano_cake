@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col-md-12">
       <h4 class="page-title">会員情報編集</h4>
 
       <%= form_with model: @customer, url: customers_information_path, local: true do |customer|%>
@@ -37,8 +37,8 @@
 
       <div class="row">
         <div class="col-lg-2 ml-2"></div>
-        <span class="d-grid gap-2 col-4 mb-3">
-          <%= customer.submit "編集内容を保存", class:'btn btn-success d-grid gap-2 col-6'%>
+        <span class="d-grid gap-2 col-md-6 mb-3">
+          <%= customer.submit "編集内容を保存", class:'btn btn-success d-grid gap-2 col-md-6'%>
         </span>
         <span>
           <%= link_to "退会する", customers_unsubscribe_path, class:'btn btn-danger d-grid gap-2'%>

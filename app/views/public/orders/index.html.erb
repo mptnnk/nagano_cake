@@ -1,18 +1,18 @@
 <div class="container">
   <% if @orders.blank? %>
-   <h4 class="col mb-3" style="text-align:center">
+   <h4 class="col-md-12 mb-3" style="text-align:center">
      注文履歴はありません
    </h4>
    <div class="col mt-3 mb-3" style="text-align:center">
      <%= link_to"商品一覧",items_path, class:'btn btn-success'%>
    </div>
-  
+
   <% else %>
-  
+
   <div class="row">
-    <h4>注文履歴一覧</h4>
-    <table class="table table-bordered">
-      <thead>
+    <h4 class="page-title">注文履歴一覧</h4>
+    <table class="table table-bordered mt-2">
+      <thead class="table-active text-center">
         <tr>
           <th>注文日</th>
           <th>配送先</th>
@@ -50,6 +50,6 @@
       <% end %>
     </table>
   </div>
- 
+
  <% end %>
 </div>

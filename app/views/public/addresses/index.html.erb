@@ -45,7 +45,8 @@
          <td><%= addresses.address %></td>
          <td><%= addresses.name %></td>
          <td class="text-center" colspan="2">
-           <%= link_to "編集する",edit_address_path(addresses.id), class:'btn btn-success' %>　<%= link_to "削除する", address_path(addresses.id), method: :delete, class:'btn btn-danger', "data-confirm"=>"削除しますか？" %>
+           <%= link_to "編集する", edit_address_path(addresses.id), class:'btn btn-success' %>
+           <%= link_to "削除する", address_path(addresses.id), method: :delete, class:'btn btn-danger', "data-confirm"=>"削除しますか？" %>
          </td>
        </tr>
       <% end %>
