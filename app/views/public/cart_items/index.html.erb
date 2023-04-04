@@ -28,7 +28,7 @@
     </thead>
 
     <% @cart_items.each do |cart_item|%>
-    <%= form_with model: cart_item, url: cart_item_path(cart_item.id),local:true do |cart_update|%>
+    <%= form_with model: cart_item, url: cart_item_path(cart_item.id), local: true do |cart_update|%>
     <!--個数変更用のform_with-->
     <tbody style="line-height: 4rem">
       <tr>
@@ -38,8 +38,8 @@
        </td>
        <td class="text-center"><%= (cart_item.item.with_tax_price).to_s(:delimited) %>円</td>
        <td class="text-center">
-        <%= cart_update.select:amount,*[1..10],selected:cart_item.amount %>
-        <%= cart_update.submit"変更",class:'btn btn-success'%>
+        <%= cart_update.select:amount,*[1..10], selected:cart_item.amount %>
+        <%= cart_update.submit "変更", class:'btn btn-success'%>
        </td>
        <td class="text-center"><%= (cart_item.subtotal).to_s(:delimited) %>円</td>
        <!--.to_s(:delimited)でカンマ表示-->
