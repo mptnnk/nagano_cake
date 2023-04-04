@@ -102,9 +102,11 @@
       <%= yield %>
     </main>
 
-    <footer class="footer mt-auto p-4 bg-light">
+    <footer class="footer mt-auto p-3 bg-light">
       <div class="container-fluid">
-        <%= link_to"管理者ログイン",new_admin_session_path,style:"color:green" %>
+        <p class="text-right mt-3">
+          <%= link_to "管理者ログイン",new_admin_session_path, style:"color:green", class:"border border-success rounded p-2"%>
+        </p>
       </div>
     </footer>
   </body>
