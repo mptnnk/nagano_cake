@@ -1,24 +1,55 @@
 <div class="container">
-<h3>管理者ログイン</h3>
+  <div class="row">
+    <div class="col mt-3">
+      <h4 class="page-title">管理者ログイン</h4>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-<table class="table table-borderless">
-  <tr>
-    <th>メールアドレス</th>
-    <td><%= f.email_field:email %></td>
-  </tr>
+      <div class="row form-group mt-4 ml-2">
+        <%= f.label:"メールアドレス", class:"col-lg-3 font-weight-bold" %>
+        <%= f.email_field:email, class:"col-lg-3",placeholder:"sample@example.com" %>
+      </div>
+      
+      <div class="row form-group ml-2">
+        <%= f.label:"パスワード", class:"col-lg-3 font-weight-bold"%>
+        <%= f.password_field:password, class:"col-lg-3"%>
+      </div>
+      
+      <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="d-grid gap-2 col-3 mb-3">
+          <%= f.submit "ログイン", class:"btn btn-primary d-grid gap-2 col-6"%>
+        </div>
+      </div>
 
-  <tr>
-    <th>パスワード</th>
-    <td><%= f.password_field:password %></td>
-  </tr>
+      <% end %>
 
-  <tr>
-    <th></th>
-    <td><%= f.submit"ログイン",class:'btn btn-primary' %></td>
-  </tr>
-</table>
+    </div>
+  </div>
+
+</div>
+
+<!--<div class="container">-->
+<!--<h3>管理者ログイン</h3>-->
+
+<!--<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>-->
+
+<!--<table class="table table-borderless">-->
+<!--  <tr>-->
+<!--    <th>メールアドレス</th>-->
+<!--    <td><%= f.email_field:email %></td>-->
+<!--  </tr>-->
+
+<!--  <tr>-->
+<!--    <th>パスワード</th>-->
+<!--    <td><%= f.password_field:password %></td>-->
+<!--  </tr>-->
+
+<!--  <tr>-->
+<!--    <th></th>-->
+<!--    <td><%= f.submit"ログイン",class:'btn btn-primary' %></td>-->
+<!--  </tr>-->
+<!--</table>-->
 
   <!--<div class="field">-->
   <!--  <%= f.label :メールアドレス %><br />-->
@@ -40,7 +71,7 @@
   <!--<div class="actions">-->
   <!--  <%= f.submit "Log in" %>-->
   <!--</div>-->
-<% end %>
+<!--<% end %>-->
 
-</div>
+<!--</div>-->
 <!--<%= render "admin/shared/links" %>-->
