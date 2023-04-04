@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col-md-12">
       <h4 class="page-title">配送先一覧</h4>
 
       <%= form_with model: @address, url: addresses_path, method: :post, local: true do |address| %>
@@ -28,6 +28,7 @@
   </div>
 
   <div class="row">
+    <div class="col-md-12">
     <table class="table table-bordered mt-2 mb-5">
       <thead class="table-active text-center">
         <tr>
@@ -50,6 +51,7 @@
       <% end %>
       </tbody>
     </table>
+  </div>
   </div>
 
 </div>
