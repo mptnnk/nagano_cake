@@ -1,12 +1,11 @@
 <div class="container text-center">
-  <p class="font-weight-bold">本当に退会しますか？</p></b>
-  <p>退会すると、会員登録情報や</p>
-  <p>これまでの購入履歴が閲覧できなくなります。</p>
-  <p>退会する場合は、「退会する」をクリックしてください。</p>
-  
+  <h4 class="font-weight-bold mt-5">本当に退会しますか？</h4>
+  <p class="mt-3" style="line-height: 2.5rem">
+    退会すると、会員登録情報や<br>
+    これまでの購入履歴が閲覧できなくなります。<br>
+    退会する場合は、「退会する」をクリックしてください。
+  </p>
   <div class="mb-3">
-   <%= link_to"退会しない",customers_my_page_path,class:"btn btn-primary" %>
-   <%= link_to"退会する",customers_withdraw_path,method: :patch, class:"btn btn-danger"%>    
+    <%= link_to "退会しない", customers_my_page_path, class:"btn btn-primary"%>　<%= link_to "退会する",customers_withdraw_path, method: :patch, class:'btn btn-danger'%>
   </div>
-  
 </div>

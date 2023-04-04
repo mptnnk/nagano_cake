@@ -1,23 +1,23 @@
 <div class="container">
  <div class="row">
   <div class="col mt-3">
-   <h4 class="page-title">ログイン</h4>
-   <h5 class="ml-2 mt-2">会員の方はこちらからログイン</h5>
+   <h4 class="page-title">ログイン</h4><br>
+   <h5 class="page-subtitle">会員の方はこちらからログイン</h5>
 
    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-   <div class="row form-group mt-4 ml-2">
-    <%= f.label:"メールアドレス", class:"col-lg-3 font-weight-bold"%>
+   <div class="form-group login-form mt-3">
+    <%= f.label:"メールアドレス", class:"col-lg-3 font-weight-bold ml-5"%>
     <%= f.email_field:email, class:"col-lg-3",placeholder:"sample@example.com"%>
    </div>
 
-   <div class="row form-group ml-2">
-    <%= f.label:"パスワード",class:"col-lg-3 font-weight-bold"%>
+   <div class="form-group login-form">
+    <%= f.label:"パスワード",class:"col-lg-3 font-weight-bold ml-5"%>
     <%= f.password_field:password, class:"col-lg-3"%>
    </div>
 
    <div class="row">
-    <div class="col-lg-3"></div>
+    <div class="col-lg-3 ml-5"></div>
     <div class="d-grid gap-2 col-3 mb-3">
      <%= f.submit "ログイン", class:"btn btn-primary d-grid gap-2 col-6"%>
     </div>
@@ -30,10 +30,10 @@
 
  <div class="row">
   <div class="col mt-3 mb-3">
-   <h4 class="page-title">会員登録がお済みでない方</h4>
-   <h5 class="col mt-2">
+   <h5 class="page-subtitle">会員登録がお済みでない方</h5>
+   <p class="col mt-2 ml-5">
     <%= link_to "こちら",new_customer_registration_path %>から新規登録を行ってください。
-   </h5>
+   </p>
   </div>
  </div>
 
