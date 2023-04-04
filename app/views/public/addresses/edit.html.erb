@@ -1,20 +1,30 @@
 <div class="container">
-  <h4>配送先編集</h4>
-  <%= form_with model: @address, url: address_path, method: :patch, local: true do |address|%>
-  <table class="table table-borderless table-sm">
-    <tr>
-      <th>郵便番号（ハイフンなし）</th>
-      <td><%= address.text_field:postal_code %></td>
-    </tr>
-    <tr>
-      <th>住所</th>
-      <td><%= address.text_area:address,size:"50x2" %></td>
-    </tr>
-    <tr>
-      <th>宛名</th>
-      <td><%= address.text_field:name %></td>
-      <td><%= address.submit"変更を保存",class:'btn btn-success'%></td>
-    </tr>
-  </table>
-  <% end %>
+  <div class="row">
+    <div class="col">
+      <h4 class="page-title">配送先編集</h4>
+
+      <%= form_with model: @address, url: address_path, method: :patch, local: true do |address|%>
+
+      <div class="form-group mt-3">
+        <%= address.label:"郵便番号（ハイフンなし）", class:"col-lg-3 font-weight-bold" %>
+        <%= address.text_field:postal_code %>
+      </div>
+
+      <div class="form-group">
+        <%= address.label:"住所", class:"col-lg-3 font-weight-bold" %>
+        <%= address.text_area:address, size:"70x1" %>
+      </div>
+
+      <div class="form-group">
+        <%= address.label:"宛名", class:"col-lg-3 font-weight-bold" %>
+        <%= address.text_field:name %>
+        <span class="d-flex justify-content-end mr-5">
+          <%= address.submit "変更を保存", class:'btn btn-success' %>
+        </span>
+      </div>
+
+      <% end %>
+
+    </div>
+  </div>
 </div>
