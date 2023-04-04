@@ -1,65 +1,69 @@
 <div class="container">
 
   <% if @cart_items.blank? %>
-   <h4 class="col mb-3" style="text-align:center">
+   <h4 class="mt-4 mb-3 text-center">
     カートに何も入っていません
    </h>
-   <div class="col mt-3 mb-3" style="text-align:center">
+   <div class="mt-3 mb-4 text-center">
     <%= link_to"商品一覧",items_path, class:'btn btn-success'%>
    </div>
   <% else %>
 
  <div class="row">
-  <h4 class="col">ショッピングカート</h4>
-  <%= link_to"カートを空にする",cart_items_destroy_all_path, method: :delete, class:'btn btn-danger'%>
+  <div class="col-md-12">
+   <h4 class="page-title">ショッピングカート</h4>
+   <span class="d-flex justify-content-end mr-3">
+    <%= link_to"カートを空にする",cart_items_destroy_all_path, method: :delete, class:'btn btn-danger'%>
+   </span>
+
+   <table class="table table-bordered mt-3">
+    <thead class="table-active text-center">
+      <tr>
+       <th style="width:30%">商品名</th>
+       <th style="width:15%">単価（税込）</th>
+       <th style="width:20%">数量</th>
+       <th style="width:20%">小計</th>
+       <th></th>
+      </tr>
+    </thead>
+
+    <% @cart_items.each do |cart_item|%>
+    <%= form_with model: cart_item, url: cart_item_path(cart_item.id),local:true do |cart_update|%>
+    <!--個数変更用のform_with-->
+    <tbody style="line-height: 4rem">
+      <tr>
+       <td>
+        <%= image_tag cart_item.item.get_cake_image, width: '30%', height: 'auto'%>
+        <%= cart_item.item.name %>
+       </td>
+       <td class="text-center"><%= (cart_item.item.with_tax_price).to_s(:delimited) %>円</td>
+       <td class="text-center">
+        <%= cart_update.select:amount,*[1..10],selected:cart_item.amount %>
+        <%= cart_update.submit"変更",class:'btn btn-success'%>
+       </td>
+       <td class="text-center"><%= (cart_item.subtotal).to_s(:delimited) %>円</td>
+       <!--.to_s(:delimited)でカンマ表示-->
+       <td class="text-center"><%= link_to"削除する",cart_item_path(cart_item.id),method: :delete, class:'btn btn-danger'%></td>
+      </tr>
+    </tbody>
+    <% @total_price = @total_price + cart_item.subtotal %>
+    <!--each文中で合計金額を計算して表示させず後で呼び出し-->
+    <% end %>
+    <% end %>
+
+   </table>
+  </div>
  </div>
 
- <table class="table table-bordered mt-3">
-  <thead class="text-center">
-    <tr>
-     <th style="width:30%">商品名</th>
-     <th style="width:15%">単価（税込）</th>
-     <th style="width:20%">数量</th>
-     <th style="width:20%">小計</th>
-     <th></th>
-    </tr>
-  </thead>
-
-  <% @cart_items.each do |cart_item|%>
-  <%= form_with model: cart_item, url: cart_item_path(cart_item.id),local:true do |cart_update|%>
-  <!--個数変更用のform_with-->
-  <tbody class="text-center">
-    <tr>
-     <td>
-      <%= image_tag cart_item.item.get_cake_image, size:'50x50'%>
-      <%= cart_item.item.name %>
-     </td>
-     <td><%= (cart_item.item.with_tax_price).to_s(:delimited) %></td>
-     <td>
-      <%= cart_update.select:amount,*[1..10],selected:cart_item.amount %>
-      <%= cart_update.submit"変更",class:'btn btn-success'%>
-     </td>
-     <td><%= (cart_item.subtotal).to_s(:delimited) %></td>
-     <!--.to_s(:delimited)でカンマ表示-->
-     <td><%= link_to"削除する",cart_item_path(cart_item.id),method: :delete, class:'btn btn-danger'%></td>
-    </tr>
-  </tbody>
-  <% @total_price = @total_price + cart_item.subtotal %>
-  <!--each文中で合計金額を計算して表示させず後で呼び出し-->
-  <% end %>
-  <% end %>
-
- </table>
-
  <div class="row">
-   <div class="col">
+   <div class="col-md-7">
      <%= link_to"買い物を続ける",root_path,class:'btn btn-primary' %>
    </div>
-   <div class="col">
+   <div class="col-md-5">
     <table class="table table-bordered">
       <tr>
-       <th class="text-center">合計金額</th>
-       <td class="text-right"><%= (@total_price).to_s(:delimited) %></td>
+       <th class="text-center table-active">合計金額</th>
+       <td class="text-right"><%= (@total_price).to_s(:delimited) %>円</td>
        <!--each文で作ったtotal_priceの呼び出し-->
       </tr>
     </table>
@@ -68,10 +72,12 @@
 
  <% end %>
 
- <div class="mb-3" style="text-align:center">
-  <% if @cart_items.present? %>
-   <%= link_to"情報入力に進む",new_order_path,class:'btn btn-success'%>
-  <% end %>
+ <div class="row">
+  <div class="col-md-12 mb-3 text-center">
+   <% if @cart_items.present? %>
+    <%= link_to"情報入力に進む",new_order_path,class:'btn btn-success'%>
+   <% end %>
+  </div>
  </div>
 
 </div>
