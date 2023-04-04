@@ -16,7 +16,7 @@ class Public::CartItemsController < ApplicationController
     #   flash[:notice]="個数を選択してください"
     #   redirect_to item_path(@item.id)
     # end
-     
+
     @cart_items = current_customer.cart_items.all
     @cart_items.each do |cart_item|
       if cart_item.item_id == @cart_item.item_id
