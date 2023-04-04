@@ -1,7 +1,7 @@
 <div class="container">
-  <h4>注文履歴詳細</h4>
+  <h4 class="page-title">注文履歴詳細</h4>
   <div class="row">
-    <div class="col">
+    <div class="col-md-12">
       <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch, local: true do |order|%>
       <table class="table table-borderless">
         <tr>
@@ -41,7 +41,7 @@
   </div>
 
   <div class="row">
-    <div class="col">
+    <div class="col-md-9">
       <table class="table table-bordered">
         <thead class="table-active">
           <tr>
@@ -49,7 +49,7 @@
             <th>単価（税込）</th>
             <th>数量</th>
             <th>小計</th>
-            <th>制作ステータス</th>
+            <th>製作ステータス</th>
           </tr>
         </thead>
         <% @order.order_details.each do |order_detail|%>
