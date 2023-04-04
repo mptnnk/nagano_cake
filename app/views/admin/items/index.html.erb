@@ -36,7 +36,9 @@
       <% end %>
     </tbody>
   </table>
-  
-  <%= paginate @items %>
-  
+
+  <div class="pagination">
+    <%= paginate @items, theme: 'twitter-bootstrap-4'%>
+  </div>
+
 </div>

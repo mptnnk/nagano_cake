@@ -10,7 +10,7 @@
         <% else %>
          商品一覧
         <% end %>
-        <span class="item-list-count">全<%= @items_count %>件</span>
+        <span class="small">全<%= @items_count %>件</span>
       </h4>
 
       <div class="mt-3 d-inline-flex flex-wrap align-items-center">
@@ -29,5 +29,8 @@
           </div>
         </div>
         <% end %>
+      </div>
 
+      <div class="pagination">
+        <%= paginate @items, theme: 'twitter-bootstrap-4' %>
       </div>
