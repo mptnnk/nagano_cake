@@ -1,42 +1,47 @@
 <div class="container">
-  <h4>商品一覧</h4>
-  <div class="text-right">
-    <%= link_to new_admin_item_path do %>
-     <i class="fas fa-plus-circle"></i>
-    <% end %>
+  <h4 class="page-title">商品一覧</h4>
+  <span class="d-flex justify-content-end mr-3 mb-2">
+     <%= link_to new_admin_item_path do %>
+      <button type="button" class="btn btn-outline-secondary rounded-circle btn-lg">＋</button>
+     <% end %>
+  </span>
+  <div class="row">
+    <div class="col-md-12">
+
+      <table class="table table-borderless">
+      <thead class="table-active">
+       <tr>
+        <th>商品ID</th>
+        <th>商品名</th>
+        <th>税抜価格</th>
+        <th>ジャンル</th>
+        <th>ステータス</th>
+       </tr>
+      </thead>
+
+      <tbody>
+       <% @items.each do |items|%>
+       <tr>
+         <td>
+           <%= items.id %>
+         </td>
+         <td><%= link_to items.name, admin_item_path(items.id) %></td>
+         <td><%= items.price %>円</td>
+         <td><%= items.genre.name %></td>
+         <td>
+           <% if items.is_active == true %>
+            <p class="text-success font-weight-bold">販売中</p>
+           <% else %>
+            <p class="text-secondary">販売停止中</p>
+           <% end %>
+         </td>
+       </tr>
+       <% end %>
+     </tbody>
+   </table>
+
+   <%= paginate @items, theme: 'twitter-bootstrap-4'%>
+
+   </div>
   </div>
-  <table class="table table-borderless">
-    <thead>
-      <tr>
-       <th>商品ID</th>
-       <th>商品名</th>
-       <th>税抜価格</th>
-       <th>ジャンル</th>
-       <th>ステータス</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @items.each do |items|%>
-      <tr>
-        <td>
-          <%= items.id %>
-        </td>
-        <td><%= link_to items.name, admin_item_path(items.id) %></td>
-        <td><%= items.price %>円</td>
-        <td><%= items.genre.name %></td>
-        <td>
-          <% if items.is_active == true %>
-           <p class="text-success font-weight-bold">販売中</p>
-          <% else %>
-           <p class="text-secondary">販売停止中</p>
-          <% end %>
-        </td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-  <%= paginate @items, theme: 'twitter-bootstrap-4'%>
-
 </div>
