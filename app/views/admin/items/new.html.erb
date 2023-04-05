@@ -1,41 +1,46 @@
 <div class="container">
-  <h4>商品新規登録</h4>
-  <%= form_with model: @item, url: admin_items_path, local:true do |item|%>
-  <table class="table table-borderless">
-    <tbody>
-      <tr>
-        <td><label for="cake_image">商品画像</label></td>
-        <td><%= item.file_field:cake_image,accept:"image/*"%><br></td>
-      </tr>
-      <tr>
-        <td><label for="name">商品名</label></td>
-        <td><%= item.text_field:name %><br></td>
-      </tr>
-      <tr>
-        <td><label for="introduction">商品説明</label></td>
-        <td><%= item.text_area:introduction %><br></td>
-      </tr>
-      <tr>
-        <td><label for="genre_id">ジャンル</label></td>
-        <td><%= item.collection_select(:genre_id,@genres,:id,:name,include_blank:"--選択してください--")%><br></td>
-      </tr>
-      <tr>
-        <td><label for="price">税抜価格</label></td>
-        <td><%= item.number_field:price %>円</td>
-      </tr>
-      <tr>
-        <td><label for="is_active">販売ステータス</label></td>
-        <td>
-          <%= item.radio_button:is_active,true %>
-          <%= item.label:is_active,"販売中",{value:"true",style:"display:inline-block;"}%>
-          <%= item.radio_button:is_active,false %>
-          <%= item.label:is_active,"販売停止中",{value:"false",style:"display:inline-block;"}%><br>
-        </td>
-      </tr>
-      <tr>
-        <td><%= item.submit"新規登録",class:'btn btn-success' %></td>
-      </tr>
-    </tbody>
-  </table>
-  <% end %>
+  <h4 class="page-title">商品新規登録</h4>
+  <div class="row">
+    <div class="col-md-12">
+      <%= form_with model: @item, url: admin_items_path, local:true do |item|%>
+      <table class="table table-borderless ml-5">
+        <tr>
+          <th style="width: 20%">商品画像</th>
+          <td><%= item.file_field:cake_image,accept:"image/*"%><br></td>
+        </tr>
+        <tr>
+          <th>商品名</th>
+          <td><%= item.text_field:name, size:"40x1" %><br></td>
+        </tr>
+        <tr>
+          <th>商品説明</th>
+          <td><%= item.text_area:introduction, size:"40x5" %><br></td>
+        </tr>
+        <tr>
+          <th>ジャンル</th>
+          <td><%= item.collection_select(:genre_id,@genres,:id,:name,include_blank:"--選択してください--")%><br></td>
+        </tr>
+        <tr>
+          <th>税抜価格</th>
+          <td><%= item.number_field:price %>円</td>
+        </tr>
+        <tr>
+          <th>販売ステータス</th>
+          <td>
+            <%= item.radio_button:is_active,true %>
+            <%= item.label:is_active,"販売中",{value:"true",style:"display:inline-block;"}%>
+            <%= item.radio_button:is_active,false %>
+            <%= item.label:is_active,"販売停止中",{value:"false",style:"display:inline-block;"}%><br>
+          </td>
+        </tr>
+        <tr>
+          <th></th>
+          <td><%= item.submit"新規登録",class:'btn btn-success col-md-2' %></td>
+        </tr>
+      </table>
+      <% end %>
+    </div>
+  </div>
+
+
 </div>
