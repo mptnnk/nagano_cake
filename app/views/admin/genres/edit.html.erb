@@ -1,8 +1,15 @@
 <div class="container">
-  <h4>ジャンル編集</h4>
-  <%= form_with model: @genre, url: edit_admin_genre_path, local: true do |genre|%>
-   <label for="name">ジャンル名</label>
-   <%= genre.text_field:name %>
-   <%= genre.submit'変更を保存',class:'btn btn-success' %>
-  <% end %>
+  <h4 class="page-title">ジャンル編集</h4>
+  <div class="row">
+    <div class="col-md-12">
+      <%= form_with model: @genre, url: edit_admin_genre_path, local: true do |genre|%>
+      <div class="form-group">
+        <%= genre.label:"ジャンル名", class:"col-md-2 font-weight-bold"%>
+        <%= genre.text_field:name, class:"col-md-2"%>
+        <%= genre.submit "変更を保存", class:'btn btn-success ml-4'%>
+      </div>
+      <% end %>
+
+    </div>
+  </div>
 </div>
