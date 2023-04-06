@@ -19,9 +19,9 @@
      <td><%= @item.genre.name %></td>
     </tr>
     <tr>
-     <th>税込価格（税抜価格）</th>
-     <td><%= @item.price %>円</td>
-     <!--「税込」と「税抜」の表示は見本では改行されている。priceは税抜価格のため、あとで税込価格を表示させる必要がある-->
+     <th>税込価格<br>(税抜価格)</th>
+     <td><%= @item.price %>（<%= @item.with_tax_price%>）円</td>
+
     </tr>
     <tr>
      <th>販売ステータス</th>
