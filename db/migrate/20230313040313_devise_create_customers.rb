@@ -7,15 +7,17 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
 
-      t.string :last_name
-      t.string :first_name
-      t.string :last_name_kana
-      t.string :first_name_kana
+      t.string :last_name, null: false
+      t.string :first_name, null: false
+      t.string :last_name_kana, null: false
+      t.string :first_name_kana, null: false
 
-      t.string :postal_code
-      t.string :address
-      t.string :telephone_number
-      t.boolean :is_deleted, default: false
+      t.string :postal_code, null: false
+      t.string :address, null: false
+      t.string :telephone_number, null: false
+      # t.boolean :is_deleted, default: false
+      t.boolean :is_active, null: false, default: true
+      # モデルのscopeでis_activeを使うためis_deletedから変更。is_deletedでもやりかたはあるかもしれないけど一旦答え合わせどおりで
 
       ## Recoverable
       t.string   :reset_password_token
@@ -50,5 +52,9 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
     add_index :customers, :reset_password_token, unique: true
     # add_index :customers, :confirmation_token,   unique: true
     # add_index :customers, :unlock_token,         unique: true
+    add_index :customers, :first_name
+    add_index :customers, :last_name
+    add_index :customers, :first_name_kana
+    add_index :customers, :last_name_kana
   end
 end
