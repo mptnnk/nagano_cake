@@ -33,10 +33,11 @@
     <tr>
       <th>会員ステータス</th>
       <td>
-        <%= ce.radio_button:is_deleted,false %>
-        <%= ce.label:is_deleted,"有効",{value:"false",style:"display:inline-block;"}%>
-        <%= ce.radio_button:is_deleted,true %>
-        <%= ce.label:is_deleted,"退会",{value:"true",style:"display:inline-block;"}%>
+        <%= ce.radio_button:is_active, true %>
+        <%= ce.label:is_active,"有効",{value:"true",style:"display:inline-block;"}%>
+        <%= ce.radio_button:is_actice, false %>
+        <%= ce.label:is_active,"退会",{value:"false",style:"display:inline-block;"}%>
+        <!--ラジオボタンの書き方は模範回答が2行で終わってたから確認-->
       </td>
     </tr>
     <tr>
