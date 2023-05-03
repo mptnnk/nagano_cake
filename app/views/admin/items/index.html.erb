@@ -1,47 +1,60 @@
 <div class="container">
-  <h4 class="page-title">商品一覧</h4>
-  <span class="d-flex justify-content-end mr-3 mb-2">
-     <%= link_to new_admin_item_path do %>
-      <button type="button" class="btn btn-outline-secondary rounded-circle btn-lg">＋</button>
-     <% end %>
-  </span>
+  <!--<h4 class="page-title">商品一覧</h4>-->
+  <% if params[:genre_id]%>
+    <h4 class="page-title"><%= @genre.name%>の商品一覧（全<%= @all_items_count %>件）</h4>
+  <% else %>
+    <h4 class="page-title">商品一覧（全<%= @all_items_count %>件）</h4>
+  <% end %>
+  
+  <!--<span class="d-flex justify-content-end mr-3 mb-2">-->
+  <!--   <%= link_to new_admin_item_path do %>-->
+  <!--    <button type="button" class="btn btn-outline-secondary rounded-circle btn-lg">＋</button>-->
+  <!--   <% end %>-->
+  <!--</span>-->
+  
+  <h3 class="text-right">
+    <%= link_to '+', new_admin_item_path, class:"btn btn-outline-secondary rounded-circle btn-lg" %>
+  </h3>
+  
   <div class="row">
     <div class="col-md-12">
+      <% if @items.first %>
+        <%= render 'admin/items/index', items: @items %>
+        <%= paginate @items, theme: 'twitter-bootstrap-4'%>
+      <% else %>
+        <h3>対応する商品はありませんでした</h3>
+      <% end %>
+   <!--   <table class="table table-borderless">-->
+   <!--   <thead class="table-active">-->
+   <!--    <tr>-->
+   <!--     <th>商品ID</th>-->
+   <!--     <th>商品名</th>-->
+   <!--     <th>税抜価格</th>-->
+   <!--     <th>ジャンル</th>-->
+   <!--     <th>ステータス</th>-->
+   <!--    </tr>-->
+   <!--   </thead>-->
 
-      <table class="table table-borderless">
-      <thead class="table-active">
-       <tr>
-        <th>商品ID</th>
-        <th>商品名</th>
-        <th>税抜価格</th>
-        <th>ジャンル</th>
-        <th>ステータス</th>
-       </tr>
-      </thead>
-
-      <tbody>
-       <% @items.each do |items|%>
-       <tr>
-         <td>
-           <%= items.id %>
-         </td>
-         <td><%= link_to items.name, admin_item_path(items.id) %></td>
-         <td><%= items.price %>円</td>
-         <td><%= items.genre.name %></td>
-         <td>
-           <% if items.is_active == true %>
-            <p class="text-success font-weight-bold">販売中</p>
-           <% else %>
-            <p class="text-secondary">販売停止中</p>
-           <% end %>
-         </td>
-       </tr>
-       <% end %>
-     </tbody>
-   </table>
-
-   <%= paginate @items, theme: 'twitter-bootstrap-4'%>
-
+   <!--   <tbody>-->
+   <!--    <% @items.each do |item|%>-->
+   <!--    <tr>-->
+   <!--      <td><%= item.id %></td>-->
+   <!--      <td><%= link_to item.name, admin_item_path(item.id) %></td>-->
+   <!--      <td><%= item.price %>円</td>-->
+   <!--      <td><%= link_to item.genre.name, admin_items_path(genre_id: item.genre_id) %></td>-->
+         <!--link_toでgenre_idの受け渡し-->
+   <!--      <td>-->
+   <!--        <% if item.is_active? %>-->
+   <!--         <p class="text-success font-weight-bold">販売中</p>-->
+   <!--        <% else %>-->
+   <!--         <p class="text-secondary">販売停止中</p>-->
+   <!--        <% end %>-->
+   <!--      </td>-->
+   <!--    </tr>-->
+   <!--    <% end %>-->
+   <!--  </tbody>-->
+   <!--</table>-->
+   
    </div>
   </div>
 </div>

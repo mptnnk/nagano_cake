@@ -19,6 +19,7 @@
         <tr>
           <th>ジャンル</th>
           <td><%= item.collection_select(:genre_id,@genres,:id,:name,include_blank:"--選択してください--")%><br></td>
+          <!--@genresはコントローラでallを指定しているが、このフォームの中で直接Genre.allと書いても動くみたい。-->
         </tr>
         <tr>
           <th>税抜価格</th>

@@ -16,7 +16,7 @@
     </tr>
     <tr>
      <th>ジャンル</th>
-     <td><%= @item.genre.name %></td>
+     <td><%= link_to @item.genre.name, admin_items_path(genre_id: @item.genre_id) %></td>
     </tr>
     <tr>
      <th>税込価格<br>(税抜価格)</th>

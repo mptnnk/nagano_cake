@@ -21,6 +21,7 @@
        <tr>
          <th>ジャンル</th>
          <td><%= item.collection_select(:genre_id,@genres,:id,:name,include_blank:"--選択してください--")%></td>
+         <!--newアクションと同様、コントローラで@genresを定義しているので読んでいるが、Genre.allで直接呼ぶこともできそう-->
        </tr>
        <tr>
          <th>税抜価格</th>

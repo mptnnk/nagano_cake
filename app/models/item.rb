@@ -17,7 +17,7 @@ class Item < ApplicationRecord
 
   has_one_attached :cake_image
 
-  def get_cake_image
+  def get_cake_image(*size)
     unless cake_image.attached?
      file_path = Rails.root.join('app/assets/images/default-image.jpg')
      cake_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpg')
@@ -25,9 +25,9 @@ class Item < ApplicationRecord
     
     if !size.empty?
       cake_image.variant(resize: size)
-      # variantはactivestorageのメソッドで、blob型のデータに対して使えるもの。
-      # これを使うとビューで画像を呼び出したときにサイズを変換することができる。
-      # 今回のメソッドだとcake_imageのサイズ指定がない場合には勝手にリサイズしろよということだと思う。
+      # variantはactivestorageの、blob型のデータに対して使えるメソッド。
+      # このメソッドで、activestorage経由で保存したデータのリサイズや回転などの処理を行うことができる。
+      # 今回の場合はcake_imageのサイズ指定がない場合には勝手にリサイズしろよということだと思う。
     else
       cake_image
     end
@@ -58,13 +58,13 @@ class Item < ApplicationRecord
   private
   
   def image_type
-    if !image.blob
+    if !cake_image.blob
       # blobはactivestorageで使えるデータ型。画像、音声、圧縮ファイルなどの容量の大きいデータを保存するためのもの。
       # 今回のメソッドでは否定演算子がついているのでイメージがもし添付されていなければのパターンだと思う。
-      errors.add(:image, 'をアップロードしてください')
-    elsif !image.blob.content_type.in?(%('image/jpeg image/png'))
+      errors.add(:cake_image, 'をアップロードしてください')
+    elsif !cake_image.blob.content_type.in?(%('image/jpeg image/png'))
       # もしくはイメージのタイプがjpegかpngでなかったらのパターン。
-      errors.add(:image, 'はJPEGまたはPNG形式を選択してアップロードしてください')
+      errors.add(:cake_image, 'はJPEGまたはPNG形式を選択してアップロードしてください')
     end
   end
 

@@ -1,0 +1,28 @@
+<table class="table table-borderless">
+  <thead class="table-active">
+    <tr>
+      <th>商品ID</th>
+      <th>商品名</th>
+      <th>税抜価格</th>
+      <th>ジャンル</th>
+      <th>ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% items.each do |item| %>
+    <tr>
+      <td><%= item.id %></td>
+      <td><%= link_to item.name, admin_item_path(item.id) %></td>
+      <td><%= item.price %>円</td>
+      <td><%= link_to item.genre.name, admin_items_path(genre_id: item.genre_id) %></td>
+      <td>
+        <% if item.is_active? %>
+          <p class="text-active">販売中</p>
+        <% else %>
+          <p class="text-invalid">販売停止中</p>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
