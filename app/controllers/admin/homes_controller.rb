@@ -2,7 +2,7 @@ class Admin::HomesController < ApplicationController
   before_action :authenticate_admin!
   # 管理者トップページ（注文履歴一覧）
   def top
-    @orders = Order.all.order(created_at: ASC).page(params[:page]).per(10)
+    @orders = Order.all.order(created_at: DESC).page(params[:page]).per(10)
   end
   # 注文日が若い順に並び替えてみるメソッドを追加してみた
   

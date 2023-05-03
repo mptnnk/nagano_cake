@@ -1,0 +1,37 @@
+<div class="container">
+  <h4 class="page-title">
+    <% if params[:customer_id] %>
+      <%= @customer.full_name %>さんの注文履歴一覧
+    <% else %>
+      注文履歴一覧
+    <% end %>
+  </h4>
+  
+  <div class="row">
+    <div class="col-md-10">
+      <table class="table">
+        <thead class="table-active">
+          <tr>
+            <th>注文日 </th>
+            <th>購入者</th>
+            <th>注文個数</th>
+            <th>総計</th>
+            <th>注文ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @orders.each do |order|%>
+            <tr>
+              <td><%= link_to order.created_at.strftime("%Y/%m/%d %H:%M:%S"), admin_order_path(order) %></td>
+              <td><%= link_to order.customer.full_name, admin_customer_path(order.customer) %></td>
+              <td><%= order.order_details.sum(:amount) %></td>
+              <td><%= order.total_payment %></td>
+              <td><%= order.status_i18n %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate @orders, theme: 'twitter-bootstrap-4' %>
+    </div>
+  </div>
+</div>

@@ -6,9 +6,10 @@
    <% genres.each do |genre|%>
    <tr>
      <td>
-       <%= link_to items_path(genre_id: genre.id),style:"color:black" do %>
-         <%= genre.name %>
-       <% end %>
+      <%= link_to genre.name, items_path(genre_id: genre.id) %>
+       <!--<%= link_to items_path(genre_id: genre.id),style:"color:black" do %>-->
+       <!--  <%= genre.name %>-->
+       <!--<% end %>-->
      </td>
    </tr>
    <% end %>

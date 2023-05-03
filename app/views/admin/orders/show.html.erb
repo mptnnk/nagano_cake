@@ -8,7 +8,7 @@
           <th>購入者</th>
           <td>
             <%= link_to admin_customer_path(@customer.id) do %>
-             <%= @order.customer.last_name %><%= @order.customer.first_name %>
+             <%= @customer.full_name %>
             <% end %>
           </td>
         </tr>
@@ -52,7 +52,7 @@
             <th>製作ステータス</th>
           </tr>
         </thead>
-        <% @order.order_details.each do |order_detail|%>
+        <% @order_details.each do |order_detail|%>
         <tbody>
           <tr>
             <td><%= order_detail.item.name %></td>
@@ -60,7 +60,7 @@
             <td><%= order_detail.amount %></td>
             <td><%= (order_detail.item.with_tax_price * order_detail.amount).to_s(:delimited) %></td>
             <td>
-             <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id), method: :patch, local: true do |order_detail|%>
+             <%= form_with model: order_detail, url: admin_order_detail_path(order_id: @order_id, id: order_detail.id), method: :patch, local: true do |order_detail|%>
               <%= order_detail.select :making_status, OrderDetail.making_statuses_i18n.invert, {prompt: false} %>
               <%= order_detail.submit"更新", class:'btn btn-success btn-sm'%>
              <% end %>

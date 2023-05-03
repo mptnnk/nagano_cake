@@ -6,33 +6,33 @@
       <%= form_with model: @customer, url: customers_information_path, local: true do |customer|%>
 
       <div class="form-group mt-3 ml-2">
-        <%= customer.label:"氏　　名", class:"col-lg-2 font-weight-bold"%>
-        <%= customer.text_field:last_name %>　<%= customer.text_field:first_name %>
+        <%= customer.label :"氏　　名", class:"col-lg-2 font-weight-bold"%>
+        <%= customer.text_field :last_name %>　<%= customer.text_field :first_name %>
       </div>
 
       <div class="form-group ml-2">
-        <%= customer.label:"フリガナ", class:"col-lg-2 font-weight-bold"%>
-        <%= customer.text_field:last_name_kana %>　<%= customer.text_field:first_name_kana %>
+        <%= customer.label :"フリガナ", class:"col-lg-2 font-weight-bold"%>
+        <%= customer.text_field :last_name_kana %>　<%= customer.text_field :first_name_kana %>
       </div>
 
       <div class="form-group ml-2">
-        <%= customer.label:"郵便番号", class:"col-lg-2 font-weight-bold"%>
-        <%= customer.text_field:postal_code %>
+        <%= customer.label :postal_code, "郵便番号", class:"col-lg-2 font-weight-bold"%>
+        <%= customer.text_field :postal_code %>
       </div>
 
       <div class="form-group ml-2">
-        <%= customer.label:"住　　所", class:"col-lg-2 font-weight-bold"%>
-        <%= customer.text_area:address, size:"60x1" %>
+        <%= customer.label :address, "住　　所", class:"col-lg-2 font-weight-bold"%>
+        <%= customer.text_area :address, size:"60x1" %>
       </div>
 
       <div class="form-group ml-2">
-        <%= customer.label:"電話番号", class:"col-lg-2 font-weight-bold"%>
-        <%= customer.telephone_field:telephone_number %>
+        <%= customer.label :telephone_number, "電話番号", class:"col-lg-2 font-weight-bold"%>
+        <%= customer.telephone_field :telephone_number %>
       </div>
 
       <div class="form-group ml-2">
-        <%= customer.label:"メールアドレス", class:"col-lg-2 font-weight-bold"%>
-        <%= customer.email_field:email %>
+        <%= customer.label :email, "メールアドレス", class:"col-lg-2 font-weight-bold"%>
+        <%= customer.email_field :email %>
       </div>
 
       <div class="row">

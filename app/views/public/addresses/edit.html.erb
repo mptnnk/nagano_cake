@@ -6,18 +6,18 @@
       <%= form_with model: @address, url: address_path, method: :patch, local: true do |address|%>
 
       <div class="form-group mt-3">
-        <%= address.label:"郵便番号（ハイフンなし）", class:"col-lg-3 font-weight-bold" %>
-        <%= address.text_field:postal_code %>
+        <%= address.label :"郵便番号（ハイフンなし）", class:"col-lg-3 font-weight-bold" %>
+        <%= address.text_field :postal_code %>
       </div>
 
       <div class="form-group">
-        <%= address.label:"住所", class:"col-lg-3 font-weight-bold" %>
-        <%= address.text_area:address, size:"70x1" %>
+        <%= address.label :"住所", class:"col-lg-3 font-weight-bold" %>
+        <%= address.text_area :address, size:"70x1" %>
       </div>
 
       <div class="form-group">
         <%= address.label:"宛名", class:"col-lg-3 font-weight-bold" %>
-        <%= address.text_field:name %>
+        <%= address.text_field :name %>
         <span class="d-flex justify-content-end mr-5">
           <%= address.submit "変更を保存", class:'btn btn-success' %>
         </span>

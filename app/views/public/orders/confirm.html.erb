@@ -12,13 +12,14 @@
          </tr>
        </thead>
        <% @cart_items.each do |cart_item|%>
+       <% item = cart_item.item %>
        <tbody>
          <tr>
            <td>
-             <%= image_tag cart_item.item.get_cake_image, width: '20%', height: 'auto'%>
-             <%= cart_item.item.name %>
+             <%= image_tag item.get_cake_image, width: '20%', height: 'auto'%>
+             <%= item.name %>
            </td>
-           <td><%= cart_item.item.with_tax_price %>円</td>
+           <td><%= item.with_tax_price %>円</td>
            <td><%= cart_item.amount %>個</td>
            <td><%= cart_item.subtotal.to_s(:delimited) %>円</td>
          </tr>
@@ -40,7 +41,8 @@
        <tr>
         <th class="table-active">商品合計</th>
          <td>
-          <%= @total_price.to_s(:delimited) %>円
+           <%= @cart_items.sum(&:subtotal).to_s(:delimited) %>
+          <!--<%= @total_price.to_s(:delimited) %>円-->
          </td>
        </tr>
        <tr>
