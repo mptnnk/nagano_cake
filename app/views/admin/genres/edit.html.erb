@@ -4,8 +4,12 @@
     <div class="col-md-12">
       <%= form_with model: @genre, url: edit_admin_genre_path, local: true do |genre|%>
       <div class="form-group">
-        <%= genre.label:"ジャンル名", class:"col-md-2 font-weight-bold"%>
-        <%= genre.text_field:name, class:"col-md-2"%>
+        <%= genre.label :"ジャンル名", class:"col-md-2 font-weight-bold"%>
+        <%= genre.text_field :name, class:"col-md-2"%>
+        <%= genre.radio_button :is_active, true %>
+        <%= genre.label :is_active, "有効", class:"text-active" %>
+        <%= genre.radio_button :is_active, false %>
+        <%= genre.label :is_active, "無効", class:"text-invalid" %>
         <%= genre.submit "変更を保存", class:'btn btn-success ml-4'%>
       </div>
       <% end %>

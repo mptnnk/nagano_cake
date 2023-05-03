@@ -1,0 +1,14 @@
+<section class="innner">
+  <h2 class="page-title">検索結果</h2>
+  <!--application.html.erbのform_tagでmethod:getのパスを渡している-->
+  <% if @result.first %>
+  <!--@result.exist?と同義-->
+    <% if @model == 'customer' %>
+      <%= render 'admin/customers/index', customers: @result %>
+    <% else %>
+      <%= render 'admin/items/index', items: @result %>
+    <% end %>
+  <% else %>
+    <h3>見つかりませんでした。検索条件を変更して再度お試しください。</h3>
+  <% end %>
+</section>
